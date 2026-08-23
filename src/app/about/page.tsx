@@ -94,10 +94,10 @@ export default function AboutPage() {
               const Glyph = item.glyph;
               return (
                 <Inview key={item.name} delay={i * 100}>
-                  <div className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg-deep hover:text-fg">
+                  <div className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg">
                     <Glyph className="h-10 w-10 text-accent" />
                     <h3 className="type-title mt-6">{item.name}</h3>
-                    <p className="type-body mt-3 text-fg-muted group-hover:text-fg-muted">
+                    <p className="type-body mt-3 text-fg-muted">
                       {item.body}
                     </p>
                   </div>
@@ -194,9 +194,9 @@ export default function AboutPage() {
                 reality.&rdquo;
               </p>
             </blockquote>
-            <figcaption className="label-mono mt-8 !tracking-[0.18em] text-fg-muted">
+            <p className="label-mono mt-8 !tracking-[0.18em] text-fg-muted">
               Trusted quality · Responsive service · Scalable solutions
-            </figcaption>
+            </p>
           </Inview>
           <Inview delay={150}>
             <ArrowLink href="/capabilities" className="mt-10">

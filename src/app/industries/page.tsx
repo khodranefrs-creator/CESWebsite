@@ -54,11 +54,11 @@ export default function IndustriesPage() {
                       dark ? "border-line-strong" : "border-line-strong bg-surface"
                     }`}
                   >
-                    <Glyph className={`h-16 w-16 md:h-20 md:w-20 ${dark ? "text-accent" : "text-accent"}`} />
+                    <Glyph className="h-16 w-16 text-accent md:h-20 md:w-20" />
                   </span>
                   <div>
                     <p className="label-mono !text-[0.66rem] text-fg-faint">
-                      INDUSTRY {industry.index} / 04
+                      INDUSTRY {industry.index} / {String(industries.length).padStart(2, "0")}
                     </p>
                     <h2 id={`${industry.id}-heading`} className="type-display-m mt-4">
                       {industry.name}

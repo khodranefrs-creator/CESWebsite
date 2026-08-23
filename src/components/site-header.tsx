@@ -83,8 +83,10 @@ export function SiteHeader() {
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`label-mono py-2 transition-colors duration-150 hover:text-accent ${
-                        active ? "text-accent" : "text-fg-muted"
+                      className={`label-mono relative py-2 transition-colors duration-150 hover:text-accent ${
+                        active
+                          ? "text-accent after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-5 after:bg-accent after:content-['']"
+                          : "text-fg-muted"
                       }`}
                     >
                       {item.label}
@@ -150,15 +152,14 @@ export function SiteHeader() {
           </button>
         </div>
 
-        <nav aria-label="Mobile" className="flex flex-1 flex-col overflow-y-auto px-5 pb-10 pt-6 md:px-10">
+        <nav
+          aria-label="Mobile"
+          className="menu-enter flex flex-1 flex-col overflow-y-auto px-5 pb-10 pt-6 md:px-10"
+        >
           <ul className="flex flex-col">
             {navItems.map((item, i) => (
               <li key={item.href} className="hairline-b">
-                <Link
-                  href={item.href}
-                  className="group flex items-baseline justify-between py-5"
-                  style={{ ["--reveal-delay" as string]: i * 40 }}
-                >
+                <Link href={item.href} className="group flex items-baseline justify-between py-5">
                   <span className="type-display-m group-hover:text-accent transition-colors">
                     {item.label}
                   </span>

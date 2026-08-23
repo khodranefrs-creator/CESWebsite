@@ -234,13 +234,13 @@ export function ContactForm() {
           rows={6}
           value={fields.message}
           onChange={setField("message")}
-          aria-invalid={Boolean(errors.message)}
+          aria-invalid={errors.message ? true : undefined}
           aria-describedby={errors.message ? `${inputId("message")}-error` : undefined}
           placeholder="Describe your application, requirements, volumes, or timelines."
           className="field-input resize-y"
         />
         {errors.message ? (
-          <p id={`${inputId("message")}-error`} className="mt-2 text-sm text-[#c94f3d]">
+          <p id={`${inputId("message")}-error`} className="mt-2 text-sm text-error">
             {errors.message}
           </p>
         ) : null}
@@ -297,7 +297,7 @@ function Field({
         className="field-input"
       />
       {error ? (
-        <p id={`${id}-error`} className="mt-2 text-sm text-[#c94f3d]" role="alert">
+        <p id={`${id}-error`} className="mt-2 text-sm text-error" role="alert">
           {error}
         </p>
       ) : null}

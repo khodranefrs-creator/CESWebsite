@@ -19,7 +19,10 @@ export function Hero() {
         <div className="grid items-center gap-14 pb-16 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
           {/* copy */}
           <div>
-            <p className="label-mono hero-rise flex items-center gap-4 text-fg-muted" style={{ ["--hero-delay" as string]: 120 }}>
+            <p
+              className="label-mono hero-rise flex flex-wrap items-center gap-x-4 gap-y-2 text-fg-muted"
+              style={{ ["--hero-delay" as string]: 120 }}
+            >
               <span aria-hidden="true" className="inline-block h-[1px] w-10 bg-accent" />
               {company.name}
               <span aria-hidden="true" className="text-fg-faint">/</span>
@@ -53,7 +56,7 @@ export function Hero() {
             </h1>
 
             <p
-              className="type-lede measure mt-9 max-w-xl text-fg-muted hero-rise"
+              className="type-lede mt-9 max-w-xl text-fg-muted hero-rise"
               style={{ ["--hero-delay" as string]: 520 }}
             >
               ClearEdge Solutions designs and manufactures high performance fiber
@@ -79,7 +82,7 @@ export function Hero() {
             className="hero-fade relative mx-auto hidden w-full max-w-xl sm:block lg:max-w-none"
             style={{ ["--hero-delay" as string]: 300 }}
           >
-            <div className="reg-corners border border-line bg-bg/60 p-6 backdrop-blur-sm md:p-8">
+            <div className="reg-corners border border-line bg-bg p-6 md:p-8">
               <div className="flex items-center justify-between pb-4 text-fg-faint">
                 <span className="label-mono !text-[0.62rem]">FIG. 01</span>
                 <span className="label-mono !text-[0.62rem]">CONNECTOR INTERFACE</span>

@@ -55,10 +55,11 @@ export function WhatWeConnect() {
 
         {/* connected product universe */}
         <div className="relative">
-          {/* vertical connection rail */}
+          {/* vertical connection rail — centered on the glyph column
+              (sm:p-8 padding + half of the 3.3rem icon box) */}
           <span
             aria-hidden="true"
-            className="absolute bottom-10 left-[3.4rem] top-10 hidden w-[1px] bg-line sm:block"
+            className="absolute bottom-10 left-[3.65rem] top-10 hidden w-[1px] bg-line sm:block"
           />
           <ol className="space-y-4">
             {pathways.map((item, i) => {
@@ -89,7 +90,7 @@ export function WhatWeConnect() {
           </ol>
 
           <Inview delay={380}>
-            <p className="label-mono mt-8 flex items-center justify-between !text-[0.62rem] text-fg-faint">
+            <p className="label-mono mt-8 !text-[0.62rem] text-fg-faint">
               <span>Serving data centers · semiconductor equipment · automotive · clean energy</span>
             </p>
           </Inview>

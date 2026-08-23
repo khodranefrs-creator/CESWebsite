@@ -4,7 +4,8 @@
    CLEAREDGE SOLUTIONS — DESIGN SYSTEM
    Concept: PRECISION CONNECTS WHAT'S NEXT
    Language: engineered graphite surfaces, hairline technical linework,
-   a single optical-signal accent, drafting-inspired mono labels.
+   official ClearEdge blue as the single accent, drafting-inspired
+   mono labels.
 ------------------------------------------------------------------ */
 
 :root {
@@ -27,6 +28,7 @@
   --accent-ink: var(--blue-ink);
   --accent-muted: rgb(0 146 252 / 0.55);
   --accent-faint: rgb(0 146 252 / 0.12);
+  --error: #ff8a6b; /* error text/borders on dark surfaces */
   --grid-line: rgb(255 255 255 / 0.045);
 }
 
@@ -44,6 +46,7 @@
   --accent-ink: #ffffff;
   --accent-muted: rgb(0 113 196 / 0.6);
   --accent-faint: rgb(0 113 196 / 0.09);
+  --error: #c13f2b; /* WCAG-safe error tone for light surfaces */
   --grid-line: rgb(15 19 24 / 0.05);
 }
 
@@ -61,6 +64,7 @@
   --color-accent-ink: var(--accent-ink);
   --color-accent-muted: var(--accent-muted);
   --color-accent-faint: var(--accent-faint);
+  --color-error: var(--error);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
@@ -241,6 +245,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
+  cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 500;
@@ -423,6 +428,30 @@ html:not(.js) .hero-svg rect {
   border-bottom: 1px solid var(--line);
 }
 
+/* ------------------------------------------- mobile menu entrance */
+
+/* Plays each time the panel flips from display:none to flex, so no
+   extra JS state is needed. Disabled globally under reduced motion. */
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.menu-enter > * {
+  opacity: 0;
+  animation: menu-item-in 480ms var(--ease-out-engineered) forwards;
+}
+.menu-enter > *:nth-child(1) { animation-delay: 60ms; }
+.menu-enter > *:nth-child(2) { animation-delay: 140ms; }
+.menu-enter > *:nth-child(3) { animation-delay: 220ms; }
+.menu-enter > *:nth-child(4) { animation-delay: 300ms; }
+
 /* --------------------------------------------------- assembly diagram */
 
 .assembly-layer {
@@ -469,13 +498,20 @@ html:not(.js) .flow-node {
 
 /* ------------------------------------------------------ industry rows */
 
+/* Collapsed panels are visibility:hidden after the collapse transition,
+   so links inside them drop out of the tab order. */
 .industry-row .industry-body {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 450ms var(--ease-out-engineered);
+  visibility: hidden;
+  transition:
+    grid-template-rows 450ms var(--ease-out-engineered),
+    visibility 0s linear 450ms;
 }
 .industry-row[data-open="true"] .industry-body {
   grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 450ms var(--ease-out-engineered);
 }
 .industry-row .industry-body > div {
   overflow: hidden;
@@ -503,10 +539,10 @@ html:not(.js) .flow-node {
   box-shadow: 0 0 0 1px var(--accent);
 }
 .field-input[aria-invalid="true"] {
-  border-color: #e5644e;
+  border-color: var(--error);
 }
 .field-input[aria-invalid="true"]:focus {
-  box-shadow: 0 0 0 1px #e5644e;
+  box-shadow: 0 0 0 1px var(--error);
 }
 select.field-input {
   appearance: none;
