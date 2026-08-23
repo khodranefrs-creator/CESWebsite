@@ -65,13 +65,13 @@ export function SiteHeader() {
       {/* Solid light bar: correct surface for the official logo and for
           legibility over every section environment. */}
       <header className="site-header theme-light fixed inset-x-0 top-0 z-50 bg-surface">
-        <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 md:h-[4.5rem] md:px-10">
+        <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 md:h-[5.5rem] md:px-10">
           <Link
             href="/"
             className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
             aria-label="ClearEdge Solutions — home"
           >
-            <BrandLogo priority sizes="(max-width: 767px) 60px, 72px" className="h-10 w-auto md:h-12" />
+            <BrandLogo priority sizes="(max-width: 767px) 60px, 96px" className="h-10 w-auto md:h-16" />
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
