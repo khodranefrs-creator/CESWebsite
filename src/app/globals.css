@@ -1,0 +1,531 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   CLEAREDGE SOLUTIONS — DESIGN SYSTEM
+   Concept: PRECISION CONNECTS WHAT'S NEXT
+   Language: engineered graphite surfaces, hairline technical linework,
+   a single optical-signal accent, drafting-inspired mono labels.
+------------------------------------------------------------------ */
+
+:root {
+  /* dark theme (default) */
+  --bg: #0b0d10;
+  --bg-deep: #07090b;
+  --surface: #12161c;
+  --surface-2: #171c24;
+  --fg: #f2f4f3;
+  --fg-muted: #a8afb8;
+  --fg-faint: #78818d;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.16);
+  --accent: #4fe3cd;
+  --accent-ink: #062a25; /* text/icon on accent fills */
+  --accent-muted: rgb(79 227 205 / 0.55);
+  --accent-faint: rgb(79 227 205 / 0.12);
+  --grid-line: rgb(255 255 255 / 0.045);
+}
+
+.theme-light {
+  --bg: #f4f5f1;
+  --bg-deep: #e9eae5;
+  --surface: #ffffff;
+  --surface-2: #fbfbf9;
+  --fg: #0f1318;
+  --fg-muted: #4c5661;
+  --fg-faint: #75808b;
+  --line: rgb(15 19 24 / 0.11);
+  --line-strong: rgb(15 19 24 / 0.2);
+  --accent: #0a6e5f;
+  --accent-ink: #ffffff;
+  --accent-muted: rgb(10 110 95 / 0.6);
+  --accent-faint: rgb(10 110 95 / 0.09);
+  --grid-line: rgb(15 19 24 / 0.05);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-faint: var(--fg-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-faint: var(--accent-faint);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo,
+    Consolas, monospace;
+
+  --ease-out-engineered: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --tracking-label: 0.22em;
+}
+
+/* ---------------------------------------------------------------- base */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv05", "cv08", "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------- typography */
+
+.type-display-xl {
+  font-size: clamp(2.85rem, 1.2rem + 7vw, 7rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+
+.type-display-l {
+  font-size: clamp(2.35rem, 1.4rem + 4.2vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.type-display-m {
+  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.25rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  font-weight: 650;
+}
+
+.type-title {
+  font-size: clamp(1.3rem, 1.15rem + 0.7vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.type-lede {
+  font-size: clamp(1.05rem, 0.98rem + 0.45vw, 1.35rem);
+  line-height: 1.55;
+  letter-spacing: -0.008em;
+}
+
+.type-body {
+  font-size: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+  line-height: 1.65;
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .label-mono {
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+.measure-tight {
+  max-width: 46ch;
+}
+
+/* ----------------------------------------------------- graphic language */
+
+.bp-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.hairline-t {
+  border-top: 1px solid var(--line);
+}
+.hairline-b {
+  border-bottom: 1px solid var(--line);
+}
+
+.tick-rule {
+  position: relative;
+}
+.tick-rule::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 5px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line-strong) 0 1px,
+    transparent 1px 14px
+  );
+}
+
+/* corner registration marks */
+.reg-corners {
+  position: relative;
+}
+.reg-corners::before,
+.reg-corners::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.reg-corners::before {
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid var(--accent);
+  border-left: 1px solid var(--accent);
+}
+.reg-corners::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+}
+
+/* ------------------------------------------------------------- buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.6rem;
+  transition:
+    background-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 150ms cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.btn-primary:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+}
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--line-strong);
+  transition:
+    color 180ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.text-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.text-link .text-link-arrow {
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.text-link:hover .text-link-arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------- reveal */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease-out-engineered),
+    transform 700ms var(--ease-out-engineered);
+  transition-delay: calc(var(--reveal-delay, 0) * 1ms);
+  will-change: opacity, transform;
+}
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+html:not(.js) [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------- line drawing */
+
+[data-draw] path,
+[data-draw] line,
+[data-draw] polyline,
+[data-draw] circle,
+[data-draw] rect {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1400ms var(--ease-out-engineered);
+}
+[data-draw="in"] path,
+[data-draw="in"] line,
+[data-draw="in"] polyline,
+[data-draw="in"] circle,
+[data-draw="in"] rect {
+  stroke-dashoffset: 0;
+}
+html:not(.js) [data-draw] path,
+html:not(.js) [data-draw] line,
+html:not(.js) [data-draw] polyline,
+html:not(.js) [data-draw] circle,
+html:not(.js) [data-draw] rect {
+  stroke-dashoffset: 0;
+}
+
+/* -------------------------------------------------------- hero intro */
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 800ms var(--ease-out-engineered) forwards;
+  animation-delay: calc(var(--hero-delay, 0) * 1ms);
+}
+
+.hero-fade {
+  opacity: 0;
+  animation: hero-fade 900ms ease forwards;
+  animation-delay: calc(var(--hero-delay, 0) * 1ms);
+}
+
+.hero-svg path,
+.hero-svg line,
+.hero-svg polyline,
+.hero-svg circle,
+.hero-svg rect {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-draw 1600ms var(--ease-out-engineered) forwards;
+  animation-delay: calc(var(--draw-delay, 0) * 1ms);
+}
+
+html:not(.js) .hero-rise,
+html:not(.js) .hero-fade {
+  opacity: 1;
+  animation: none;
+}
+html:not(.js) .hero-svg path,
+html:not(.js) .hero-svg line,
+html:not(.js) .hero-svg polyline,
+html:not(.js) .hero-svg circle,
+html:not(.js) .hero-svg rect {
+  stroke-dashoffset: 0;
+  animation: none;
+}
+
+/* --------------------------------------------------- header state */
+
+.site-header {
+  transition:
+    background-color 300ms ease,
+    border-color 300ms ease,
+    backdrop-filter 300ms ease;
+}
+.site-header[data-scrolled="true"] {
+  background: color-mix(in srgb, var(--bg-deep) 86%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* --------------------------------------------------- assembly diagram */
+
+.assembly-layer {
+  transition: transform 900ms var(--ease-out-engineered);
+  transition-delay: calc(var(--layer-delay, 0) * 120ms);
+}
+[data-assembled="false"] .assembly-layer {
+  transform: translate(var(--scatter-x, 0), var(--scatter-y, 0));
+  opacity: 0.25;
+}
+[data-assembled="true"] .assembly-layer {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+html:not(.js) .assembly-layer {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------- flow line */
+
+.flow-path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 2200ms var(--ease-out-engineered);
+}
+[data-flow="in"] .flow-path {
+  stroke-dashoffset: 0;
+}
+html:not(.js) .flow-path {
+  stroke-dashoffset: 0;
+}
+
+.flow-node {
+  opacity: 0.35;
+  transition: opacity 500ms ease;
+}
+[data-flow="in"] .flow-node {
+  opacity: 1;
+}
+html:not(.js) .flow-node {
+  opacity: 1;
+}
+
+/* ------------------------------------------------------ industry rows */
+
+.industry-row .industry-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 450ms var(--ease-out-engineered);
+}
+.industry-row[data-open="true"] .industry-body {
+  grid-template-rows: 1fr;
+}
+.industry-row .industry-body > div {
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------ forms */
+
+.field-input {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--fg);
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+.field-input:hover {
+  border-color: var(--fg-faint);
+}
+.field-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.field-input[aria-invalid="true"] {
+  border-color: #e5644e;
+}
+.field-input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 1px #e5644e;
+}
+select.field-input {
+  appearance: none;
+  background-image: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--fg-muted) 50%
+    ),
+    linear-gradient(-45deg, transparent 49%, var(--fg-muted) 50%);
+  background-position:
+    calc(100% - 21px) 55%,
+    calc(100% - 15px) 55%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+select.field-input option {
+  background: var(--surface);
+  color: var(--fg);
+}
