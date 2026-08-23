@@ -46,37 +46,6 @@ export function CTASection() {
             </Link>
           </div>
         </Inview>
-
-        <Inview delay={260}>
-          <div className="mx-auto mt-20 grid max-w-3xl gap-px border border-line bg-line text-left sm:grid-cols-3">
-            <div className="bg-bg-deep p-6">
-              <p className="label-mono !text-[0.62rem] text-fg-faint">Visit</p>
-              <p className="mt-3 text-sm leading-relaxed">
-                {company.address.street}
-                <br />
-                {company.address.city}, {company.address.state} {company.address.zip}
-                <br />
-                {company.address.country}
-              </p>
-            </div>
-            <div className="bg-bg-deep p-6">
-              <p className="label-mono !text-[0.62rem] text-fg-faint">Call</p>
-              <p className="mt-3 text-sm">
-                <a href={`tel:${company.phoneHref}`} className="transition-colors hover:text-accent">
-                  {company.phone}
-                </a>
-              </p>
-            </div>
-            <div className="bg-bg-deep p-6">
-              <p className="label-mono !text-[0.62rem] text-fg-faint">Write</p>
-              <p className="mt-3 text-sm">
-                <a href={`mailto:${company.email}`} className="break-all transition-colors hover:text-accent">
-                  {company.email}
-                </a>
-              </p>
-            </div>
-          </div>
-        </Inview>
       </div>
     </section>
   );

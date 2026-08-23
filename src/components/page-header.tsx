@@ -31,6 +31,17 @@ export function PageHeader({
             <p className="type-lede measure mt-8 text-fg-muted">{lede}</p>
           ) : null}
         </Inview>
+
+        {/* drafting stamp — anchors the lower-right field of the header band.
+            Purely decorative: coordinates mirror the location block data. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-7 right-5 hidden flex-col items-end gap-3 text-fg-faint md:right-10 xl:flex"
+        >
+          <span className="label-mono !text-[0.6rem]">37.35° N — 121.95° W</span>
+          <span className="rule-ticks-y h-16 w-[1px]" />
+          <span className="label-mono !text-[0.6rem]">SILICON VALLEY · US</span>
+        </div>
       </div>
       <div className="hairline-b relative" />
     </section>

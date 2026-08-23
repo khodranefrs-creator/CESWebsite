@@ -95,7 +95,12 @@ export default function AboutPage() {
               return (
                 <Inview key={item.name} delay={i * 100}>
                   <div className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg">
-                    <Glyph className="h-10 w-10 text-accent" />
+                    <div className="flex items-start justify-between">
+                      <Glyph className="h-10 w-10 text-accent" />
+                      <span className="label-mono !text-[0.62rem] text-fg-faint">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
                     <h3 className="type-title mt-6">{item.name}</h3>
                     <p className="type-body mt-3 text-fg-muted">
                       {item.body}
@@ -151,11 +156,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* built for the complex */}
+      {/* built for the complex — mirrored composition: traits left,
+          intro right, inverting the Principles section above it */}
       <section className="theme-light bg-bg text-fg" aria-labelledby="complex-heading">
         <div className="mx-auto max-w-[84rem] px-5 py-20 md:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
-            <Inview>
+          <div className="grid gap-12 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
+            <Inview className="lg:order-2">
               <TechnicalLabel>Built for the complex</TechnicalLabel>
               <h2 id="complex-heading" className="type-display-m mt-6">
                 Distinguished by complexity, delivered with&nbsp;efficiency.
@@ -167,7 +173,7 @@ export default function AboutPage() {
                 value and reliability.
               </p>
             </Inview>
-            <dl>
+            <dl className="lg:order-1">
               {complexTraits.map((t, i) => (
                 <Inview key={t.term} delay={i * 90}>
                   <div className="hairline-t py-7 first:border-t first:border-line-strong">

@@ -213,6 +213,15 @@ body {
   );
 }
 
+/* vertical variant: hairline column with surveyor-style ticks */
+.rule-ticks-y {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--line-strong) 0 1px,
+    transparent 1px 9px
+  );
+}
+
 /* corner registration marks */
 .reg-corners {
   position: relative;
