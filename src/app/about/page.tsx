@@ -65,7 +65,7 @@ export default function AboutPage() {
       />
 
       {/* what we manufacture */}
-      <section className="theme-light bg-bg text-fg" aria-labelledby="mfg-heading">
+      <section className="theme-light bg-surface text-fg" aria-labelledby="mfg-heading">
         <div className="mx-auto max-w-[84rem] px-5 py-20 md:px-10 lg:py-28">
           <Inview>
             <h2 id="mfg-heading" className="type-display-m max-w-3xl">
@@ -182,7 +182,7 @@ export default function AboutPage() {
       </section>
 
       {/* partnership quote */}
-      <section className="bg-bg-deep text-fg" aria-label="Partnership philosophy">
+      <section className="bg-bg text-fg" aria-label="Partnership philosophy">
         <div className="mx-auto max-w-4xl px-5 py-24 text-center md:px-10 lg:py-36">
           <Inview>
             <svg width="34" height="24" viewBox="0 0 34 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-auto text-accent" aria-hidden="true">

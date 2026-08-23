@@ -14,9 +14,9 @@ export function PageHeader({
   meta?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-bg-deep text-fg">
+    <section className="theme-light relative overflow-hidden bg-bg text-fg">
       <div className="bp-grid absolute inset-0" aria-hidden="true" />
-      <div className="relative mx-auto max-w-[84rem] px-5 pb-16 pt-36 md:px-10 md:pb-24 md:pt-44">
+      <div className="relative mx-auto max-w-[84rem] px-5 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40">
         <Inview>
           <div className="flex items-center justify-between gap-6">
             <TechnicalLabel>{eyebrow}</TechnicalLabel>

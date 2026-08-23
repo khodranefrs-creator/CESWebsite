@@ -4,7 +4,7 @@ import { company } from "@/lib/site";
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-bg-deep text-fg" aria-labelledby="cta-heading">
+    <section className="relative overflow-hidden border-t border-line bg-bg-deep text-fg" aria-labelledby="cta-heading">
       {/* converging signal lines */}
       <svg
         className="pointer-events-none absolute inset-x-0 top-0 h-full w-full"

@@ -8,6 +8,11 @@
 ------------------------------------------------------------------ */
 
 :root {
+  /* Official ClearEdge brand blue — sampled from the supplied mainlogo asset */
+  --blue: #0092fc;
+  --blue-deep: #0071c4; /* WCAG-safe variant of the brand blue for text on light surfaces */
+  --blue-ink: #041e33; /* typography on blue fills */
+
   /* dark theme (default) */
   --bg: #0b0d10;
   --bg-deep: #07090b;
@@ -18,10 +23,10 @@
   --fg-faint: #78818d;
   --line: rgb(255 255 255 / 0.09);
   --line-strong: rgb(255 255 255 / 0.16);
-  --accent: #4fe3cd;
-  --accent-ink: #062a25; /* text/icon on accent fills */
-  --accent-muted: rgb(79 227 205 / 0.55);
-  --accent-faint: rgb(79 227 205 / 0.12);
+  --accent: var(--blue);
+  --accent-ink: var(--blue-ink);
+  --accent-muted: rgb(0 146 252 / 0.55);
+  --accent-faint: rgb(0 146 252 / 0.12);
   --grid-line: rgb(255 255 255 / 0.045);
 }
 
@@ -35,10 +40,10 @@
   --fg-faint: #75808b;
   --line: rgb(15 19 24 / 0.11);
   --line-strong: rgb(15 19 24 / 0.2);
-  --accent: #0a6e5f;
+  --accent: var(--blue-deep);
   --accent-ink: #ffffff;
-  --accent-muted: rgb(10 110 95 / 0.6);
-  --accent-faint: rgb(10 110 95 / 0.09);
+  --accent-muted: rgb(0 113 196 / 0.6);
+  --accent-faint: rgb(0 113 196 / 0.09);
   --grid-line: rgb(15 19 24 / 0.05);
 }
 
@@ -84,8 +89,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--blue);
+  color: var(--blue-ink);
 }
 
 :focus-visible {
@@ -254,12 +259,12 @@ body {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--blue);
+  color: var(--blue-ink);
 }
 .btn-primary:hover {
-  background: var(--fg);
-  color: var(--bg);
+  background: var(--blue-deep);
+  color: #ffffff;
 }
 
 .btn-ghost {
@@ -415,14 +420,6 @@ html:not(.js) .hero-svg rect {
 /* --------------------------------------------------- header state */
 
 .site-header {
-  transition:
-    background-color 300ms ease,
-    border-color 300ms ease,
-    backdrop-filter 300ms ease;
-}
-.site-header[data-scrolled="true"] {
-  background: color-mix(in srgb, var(--bg-deep) 86%, transparent);
-  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
 

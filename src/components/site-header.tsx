@@ -4,41 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { company, navItems } from "@/lib/site";
-import { EdgeMark } from "@/components/graphics";
-
-function Wordmark() {
-  return (
-    <Link
-      href="/"
-      className="flex items-center gap-3 text-fg"
-      aria-label={`${company.name} — home`}
-    >
-      <EdgeMark className="h-8 w-8 shrink-0" />
-      <span className="flex flex-col leading-none">
-        <span className="text-[1.05rem] font-semibold tracking-tight">
-          ClearEdge
-        </span>
-        <span className="label-mono mt-1 !text-[0.56rem] text-fg-muted">
-          Solutions, Inc.
-        </span>
-      </span>
-    </Link>
-  );
-}
+import { BrandLogo } from "@/components/brand-logo";
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -90,9 +62,17 @@ export function SiteHeader() {
         Skip to content
       </a>
 
-      <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-transparent" data-scrolled={scrolled}>
-        <div className="mx-auto flex h-[4.5rem] max-w-[84rem] items-center justify-between px-5 md:px-10">
-          <Wordmark />
+      {/* Solid light bar: correct surface for the official logo and for
+          legibility over every section environment. */}
+      <header className="site-header theme-light fixed inset-x-0 top-0 z-50 bg-surface">
+        <div className="mx-auto flex h-16 max-w-[84rem] items-center justify-between px-5 md:h-[4.5rem] md:px-10">
+          <Link
+            href="/"
+            className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
+            aria-label="ClearEdge Solutions — home"
+          >
+            <BrandLogo priority sizes="(max-width: 767px) 60px, 72px" className="h-10 w-auto md:h-12" />
+          </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
             <ul className="flex items-center gap-9">
@@ -116,7 +96,10 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact" className="btn btn-primary hidden md:inline-flex !py-3 !text-[0.72rem]">
+            <Link
+              href="/contact"
+              className="btn btn-primary hidden md:inline-flex !py-3 !text-[0.72rem]"
+            >
               Request a Quote
             </Link>
             <button
@@ -144,10 +127,17 @@ export function SiteHeader() {
         aria-modal="true"
         aria-label="Site menu"
         hidden={!open}
-        className="fixed inset-0 z-[60] flex flex-col bg-bg-deep"
+        className="theme-light fixed inset-0 z-[60] flex flex-col bg-bg"
       >
-        <div className="flex h-[4.5rem] items-center justify-between px-5 md:px-10 hairline-b">
-          <Wordmark />
+        <div className="flex h-16 items-center justify-between px-5 hairline-b md:px-10">
+          <Link
+            href="/"
+            onClick={closeAndReturnFocus}
+            className="flex shrink-0 items-center"
+            aria-label="ClearEdge Solutions — home"
+          >
+            <BrandLogo priority sizes="(max-width: 639px) 54px, 60px" className="h-9 w-auto sm:h-10" />
+          </Link>
           <button
             type="button"
             onClick={closeAndReturnFocus}

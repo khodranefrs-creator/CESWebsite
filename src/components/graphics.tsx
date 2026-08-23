@@ -15,15 +15,8 @@ const base = {
 
 /* ------------------------------------------------------------ brand */
 
-export function EdgeMark(props: G) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...base} {...props}>
-      <rect x="1.5" y="1.5" width="29" height="29" strokeWidth="1.5" />
-      <polyline points="5,21 12.5,21 12.5,11 27,11" strokeWidth="2" pathLength={1} />
-      <circle cx="12.5" cy="11" r="2.4" strokeWidth="1.5" />
-    </svg>
-  );
-}
+/* The company logo is rendered exclusively via <BrandLogo>
+   (src/components/brand-logo.tsx) using the supplied official asset. */
 
 /* ------------------------------------------------------ hero drawing */
 

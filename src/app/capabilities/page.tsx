@@ -96,7 +96,7 @@ export default function CapabilitiesPage() {
       </section>
 
       {/* engineering collaboration note */}
-      <section className="bg-bg-deep text-fg" aria-labelledby="collab-heading">
+      <section className="bg-bg text-fg" aria-labelledby="collab-heading">
         <div className="mx-auto grid max-w-[84rem] items-center gap-10 px-5 py-20 md:px-10 lg:grid-cols-[1fr_1fr] lg:py-32">
           <Inview>
             <TechnicalLabel>How we engage</TechnicalLabel>

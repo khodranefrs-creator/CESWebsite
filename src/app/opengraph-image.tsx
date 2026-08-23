@@ -24,7 +24,7 @@ export default function OpengraphImage() {
             style={{
               width: 14,
               height: 14,
-              background: "#4fe3cd",
+              background: "#0092fc",
               borderRadius: 999,
             }}
           />
@@ -47,7 +47,7 @@ export default function OpengraphImage() {
               alignItems: "center",
               height: 4,
               width: 160,
-              background: "#4fe3cd",
+              background: "#0092fc",
               marginBottom: 40,
             }}
           />
@@ -67,7 +67,7 @@ export default function OpengraphImage() {
               fontWeight: 700,
               letterSpacing: -3,
               lineHeight: 1.05,
-              color: "#4fe3cd",
+              color: "#0092fc",
             }}
           >
             what&rsquo;s next.

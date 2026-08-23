@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { company, navItems, capabilities } from "@/lib/site";
-import { EdgeMark } from "@/components/graphics";
+import { BrandLogo } from "@/components/brand-logo";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line bg-bg-deep text-fg">
+    <footer className="theme-light border-t border-line bg-bg-deep text-fg">
       {/* final connection line */}
       <div className="mx-auto max-w-[84rem] px-5 pt-14 md:px-10" aria-hidden="true">
         <svg viewBox="0 0 1200 24" fill="none" stroke="currentColor" className="h-6 w-full text-fg-faint" preserveAspectRatio="none">
@@ -15,13 +15,9 @@ export function SiteFooter() {
 
       <div className="mx-auto grid max-w-[84rem] gap-12 px-5 pb-12 pt-10 md:grid-cols-2 md:px-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div>
-          <div className="flex items-center gap-3">
-            <EdgeMark className="h-9 w-9 text-accent" />
-            <div className="leading-tight">
-              <p className="text-lg font-semibold tracking-tight">ClearEdge</p>
-              <p className="label-mono mt-1 !text-[0.56rem] text-fg-muted">Solutions, Inc.</p>
-            </div>
-          </div>
+          <Link href="/" aria-label="ClearEdge Solutions — home" className="inline-flex">
+            <BrandLogo sizes="(max-width: 767px) 96px, 108px" className="h-16 w-auto md:h-[4.5rem]" />
+          </Link>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-fg-muted">
             Designer and manufacturer of high performance fiber optic and copper
             cabling systems, and electro-mechanical assemblies.
@@ -91,7 +87,7 @@ export function SiteFooter() {
               </a>
             </p>
           </address>
-          <Link href="/contact" className="btn btn-ghost mt-7 !py-3 !text-[0.72rem]">
+          <Link href="/contact" className="btn btn-primary mt-7 !py-3 !text-[0.72rem]">
             Request a Quote
           </Link>
         </div>

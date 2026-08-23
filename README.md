@@ -14,6 +14,20 @@ electro-mechanical assemblies.
   orchestrated by one small `IntersectionObserver` component
   (`src/components/inview.tsx`)
 - Fonts: Inter + IBM Plex Mono via `next/font` (self-hosted at build)
+- `sharp` for production image optimization
+
+## Brand system
+
+- **Official logo:** `src/assets/mainlogo.png` (supplied asset, never altered).
+  Rendered exclusively through `src/components/brand-logo.tsx` using
+  `next/image` static import (intrinsic 3:2 dimensions, responsive variants,
+  zero layout shift). Touchpoints: desktop header, mobile header, mobile menu,
+  footer.
+- **Color balance:** white / off-white dominant, graphite engineering bands
+  (hero, *Engineered for the Complex*, *Engineering to Production*, final CTA),
+  and the official ClearEdge blue `#0092FC` — sampled from the logo — used as a
+  controlled technical signal (labels, links, active states, line work, CTAs).
+  On white surfaces, text-level blue uses the WCAG-safe deep variant `#0071C4`.
 
 ## Getting started
 
@@ -37,10 +51,10 @@ npm run lint     # eslint
 
 ## Approved product imagery
 
-No raster assets are shipped in this repository. All visuals are original SVG
-technical line art (`src/components/graphics.tsx`). If approved product
-photography is supplied (e.g., from the approved MPO/MTP cable assembly
-reference), insert it as follows:
+All interface visuals besides the official logo are original SVG technical
+line art (`src/components/graphics.tsx`). If approved product photography is
+supplied (e.g., from the approved MPO/MTP cable assembly reference), insert it
+as follows:
 
 1. Place the file in `public/` (e.g., `public/products/mpo-mtp.jpg`).
 2. In `src/components/home/hero.tsx`, the framed panel containing
