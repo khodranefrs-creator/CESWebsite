@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Inview } from "@/components/inview";
 import { TechnicalLabel } from "@/components/ui";
 import {
@@ -9,18 +10,21 @@ import {
 const pathways = [
   {
     id: "fiber",
+    familyId: "fiber-optic",
     glyph: FiberGlyph,
     name: "Fiber Optic",
     note: "High performance cabling systems for speed-critical applications.",
   },
   {
     id: "copper",
+    familyId: "copper-cabling",
     glyph: CopperGlyph,
     name: "Copper",
     note: "Copper cabling systems built for dependable everyday throughput.",
   },
   {
     id: "em",
+    familyId: "electro-mechanical",
     glyph: BoxBuildGlyph,
     name: "Electro-Mechanical",
     note: "Box build assemblies that integrate connectivity into complete systems.",
@@ -67,7 +71,11 @@ export function WhatWeConnect() {
               return (
                 <li key={item.id}>
                   <Inview delay={i * 120}>
-                    <div className="reg-corners group relative flex items-start gap-7 border border-line bg-surface p-7 transition-colors duration-300 hover:border-accent sm:p-8">
+                    <Link
+                      href={`/products#${item.familyId}`}
+                      aria-label={`${item.name} — view product family`}
+                      className="reg-corners group relative flex items-start gap-7 border border-line bg-surface p-7 transition-colors duration-300 hover:border-accent sm:p-8"
+                    >
                       <span className="relative z-10 flex h-[3.3rem] w-[3.3rem] shrink-0 items-center justify-center border border-line-strong bg-bg text-fg transition-colors duration-300 group-hover:border-accent group-hover:text-accent">
                         <Glyph className="h-9 w-9" />
                       </span>
@@ -82,7 +90,7 @@ export function WhatWeConnect() {
                         aria-hidden="true"
                         className="ml-auto mt-1 hidden h-2 w-2 shrink-0 rounded-full border border-line-strong transition-colors duration-300 group-hover:border-accent group-hover:bg-accent lg:block"
                       />
-                    </div>
+                    </Link>
                   </Inview>
                 </li>
               );

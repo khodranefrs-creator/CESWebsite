@@ -18,10 +18,56 @@ export const company = {
 
 export const navItems = [
   { href: "/about", label: "About" },
+  { href: "/products", label: "Products" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/industries", label: "Industries" },
   { href: "/contact", label: "Contact" },
 ] as const;
+
+/* ------------------------------------------------------------------ */
+/* Product families — the physical outputs of the three manufacturing
+   disciplines. Copy derived strictly from supplied material; ids match
+   the capability ids so /contact?capability= deep links stay valid.    */
+/* ------------------------------------------------------------------ */
+
+export type ProductFamily = {
+  id: string;
+  index: string;
+  name: string;
+  tagline: string;
+  description: string;
+  applications: string[];
+};
+
+export const productFamilies: ProductFamily[] = [
+  {
+    id: "fiber-optic",
+    index: "01",
+    name: "Fiber Optic Cable Assemblies",
+    tagline: "High-performance optical pathways",
+    description:
+      "High performance fiber optic cabling systems, engineered to meet exact performance requirements for technology-driven applications — from single assemblies to complete engineered runs.",
+    applications: ["data-centers", "semiconductor-equipment"],
+  },
+  {
+    id: "copper-cabling",
+    index: "02",
+    name: "Copper Cable Assemblies",
+    tagline: "Reliable copper infrastructure",
+    description:
+      "Copper cabling systems designed and manufactured for reliability — built around each customer’s configuration and design requirements rather than a fixed catalogue.",
+    applications: ["data-centers", "automotive"],
+  },
+  {
+    id: "electro-mechanical",
+    index: "03",
+    name: "Electro-Mechanical Box Builds",
+    tagline: "Integrated box-build capability",
+    description:
+      "Electro-mechanical box build assemblies that integrate connectivity into complete systems — integrated, assembled, and finished to the standards critical applications demand.",
+    applications: ["semiconductor-equipment", "clean-energy"],
+  },
+];
 
 /* ------------------------------------------------------------------ */
 /* Capabilities — wording derived strictly from supplied material      */
