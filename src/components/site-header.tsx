@@ -110,7 +110,8 @@ export function SiteHeader() {
               onClick={() => setOpen(true)}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              className="flex h-11 w-11 items-center justify-center border border-line-strong text-fg transition-colors hover:border-accent hover:text-accent lg:hidden"
+              aria-label="Open menu"
+              className="hidden h-11 w-11 items-center justify-center border border-line-strong text-fg transition-colors hover:border-accent hover:text-accent max-lg:flex"
             >
               <span className="sr-only">Open menu</span>
               <svg width="20" height="14" viewBox="0 0 20 14" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
