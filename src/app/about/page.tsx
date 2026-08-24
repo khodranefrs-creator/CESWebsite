@@ -2,13 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Inview } from "@/components/inview";
-import { TechnicalLabel, ArrowLink } from "@/components/ui";
+import { TechnicalLabel, ArrowLink, SectionIndex } from "@/components/ui";
 import { CTASection } from "@/components/cta-section";
-import {
-  FiberGlyph,
-  CopperGlyph,
-  BoxBuildGlyph,
-} from "@/components/graphics";
 
 export const metadata: Metadata = {
   title: "About",
@@ -50,6 +45,24 @@ const complexTraits = [
   },
 ];
 
+const portfolio = [
+  {
+    familyId: "fiber-optic",
+    name: "Fiber Optic",
+    body: "High performance fiber optic cabling systems for technology-driven industries.",
+  },
+  {
+    familyId: "copper-cabling",
+    name: "Copper Cable Assembly",
+    body: "Copper cabling systems engineered for reliability across demanding applications.",
+  },
+  {
+    familyId: "electro-mechanical",
+    name: "Electro-Mechanical Box Build",
+    body: "Integrated electro-mechanical assemblies that turn connectivity into complete systems.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -64,59 +77,52 @@ export default function AboutPage() {
         meta="CLEAREDGE SOLUTIONS, INC. · SAN JOSE, CALIFORNIA"
       />
 
-      {/* what we manufacture */}
-      <section className="theme-light bg-surface text-fg" aria-labelledby="mfg-heading">
+      {/* what we manufacture — numbered rows */}
+      <section className="theme-light bg-bg text-fg" aria-labelledby="mfg-heading">
         <div className="mx-auto max-w-[84rem] px-5 py-20 md:px-10 lg:py-28">
           <Inview>
             <h2 id="mfg-heading" className="type-display-m max-w-3xl">
               Our product portfolio is built around one thing: keeping
-              technology&nbsp;connected.
+              technology connected.
             </h2>
           </Inview>
-          <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
-            {[
-              {
-                familyId: "fiber-optic",
-                glyph: FiberGlyph,
-                name: "Fiber Optic",
-                body: "High performance fiber optic cabling systems for technology-driven industries.",
-              },
-              {
-                familyId: "copper-cabling",
-                glyph: CopperGlyph,
-                name: "Copper Cable Assembly",
-                body: "Copper cabling systems engineered for reliability across demanding applications.",
-              },
-              {
-                familyId: "electro-mechanical",
-                glyph: BoxBuildGlyph,
-                name: "Electro-Mechanical Box Build",
-                body: "Integrated electro-mechanical assemblies that turn connectivity into complete systems.",
-              },
-            ].map((item, i) => {
-              const Glyph = item.glyph;
-              return (
-                <Inview key={item.name} delay={i * 100}>
+          <ol className="mt-14 border-t border-line-strong">
+            {portfolio.map((item, i) => (
+              <li key={item.familyId}>
+                <Inview delay={i * 90}>
                   <Link
                     href={`/products#${item.familyId}`}
                     aria-label={`${item.name} — view product family`}
-                    className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg"
+                    className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-7 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-8"
                   >
-                    <div className="flex items-start justify-between">
-                      <Glyph className="h-10 w-10 text-accent" />
-                      <span className="label-mono !text-[0.62rem] text-fg-faint">
-                        {String(i + 1).padStart(2, "0")}
+                    <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span>
+                      <span className="type-title block transition-colors duration-200 group-hover:text-accent">
+                        {item.name}
                       </span>
-                    </div>
-                    <h3 className="type-title mt-6 transition-colors duration-200 group-hover:text-accent">{item.name}</h3>
-                    <p className="type-body mt-3 text-fg-muted">
-                      {item.body}
-                    </p>
+                      <span className="mt-1.5 block max-w-xl text-sm leading-relaxed text-fg-muted">
+                        {item.body}
+                      </span>
+                    </span>
+                    <svg
+                      width="18"
+                      height="14"
+                      viewBox="0 0 14 10"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                      className="text-fg-faint transition-all duration-200 group-hover:translate-x-1.5 group-hover:text-accent"
+                    >
+                      <path d="M0 5h12M8 1l4 4-4 4" />
+                    </svg>
                   </Link>
                 </Inview>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ol>
           <Inview delay={120}>
             <p className="mt-8 text-sm text-fg-muted">
               Serving data centers, semiconductor equipment, automotive, and
@@ -134,7 +140,8 @@ export default function AboutPage() {
         <div className="mx-auto grid max-w-[84rem] gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_1.5fr] lg:gap-20 lg:py-32">
           <div>
             <Inview>
-              <TechnicalLabel>How we think</TechnicalLabel>
+              <SectionIndex n="02" />
+              <TechnicalLabel className="mt-6">How we think</TechnicalLabel>
               <h2 id="principles-heading" className="type-display-l mt-6">
                 Principles we engineer&nbsp;by.
               </h2>

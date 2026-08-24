@@ -1,22 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import { company } from "@/lib/site";
-import { HeroConnector } from "@/components/graphics";
+import mtpTrunkAssembly from "@/assets/mtp-trunk-assembly.webp";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bg-deep" aria-labelledby="hero-heading">
+    <section className="relative overflow-hidden bg-bg-deep text-fg" aria-labelledby="hero-heading">
       <div className="bp-grid absolute inset-0" aria-hidden="true" />
-      <div
-        className="absolute inset-0"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(120% 90% at 70% 10%, transparent 40%, rgba(7,9,11,0.9) 100%)",
-        }}
-      />
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-[84rem] flex-col justify-end px-5 pb-0 pt-32 md:px-10 lg:pt-36">
-        <div className="grid items-center gap-14 pb-16 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
+      <div className="relative mx-auto max-w-[84rem] px-5 pb-0 pt-28 md:px-10 md:pt-32">
+        <div className="grid items-center gap-14 pb-14 lg:min-h-[88svh] lg:grid-cols-[1.12fr_1fr] lg:gap-16 lg:pb-16">
           {/* copy */}
           <div>
             <p
@@ -26,38 +19,21 @@ export function Hero() {
               <span aria-hidden="true" className="inline-block h-[1px] w-10 bg-accent" />
               {company.name}
               <span aria-hidden="true" className="text-fg-faint">/</span>
-              <span className="text-accent">San Jose, CA</span>
+              <span className="text-accent">San Jose, California</span>
             </p>
 
-            <h1 id="hero-heading" className="type-display-xl mt-8">
+            <h1 id="hero-heading" className="type-giant mt-9">
               <span className="hero-rise block" style={{ ["--hero-delay" as string]: 240 }}>
-                Precision
+                Engineered
               </span>
-              <span className="hero-rise block" style={{ ["--hero-delay" as string]: 340 }}>
-                connects{" "}
-                <span className="relative inline-block whitespace-nowrap">
-                  what&rsquo;s&nbsp;next.
-                  <svg
-                    className="hero-fade absolute -bottom-2 left-0 w-full text-accent"
-                    viewBox="0 0 320 6"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                    style={{ ["--hero-delay" as string]: 700 }}
-                    preserveAspectRatio="none"
-                  >
-                    <path d="M0 3 H130" opacity="0.35" />
-                    <circle cx="140" cy="3" r="2" />
-                    <path d="M152 3 H320" />
-                  </svg>
-                </span>
+              <span className="hero-rise block" style={{ ["--hero-delay" as string]: 360 }}>
+                to connect<span className="text-accent">.</span>
               </span>
             </h1>
 
             <p
               className="type-lede mt-9 max-w-xl text-fg-muted hero-rise"
-              style={{ ["--hero-delay" as string]: 520 }}
+              style={{ ["--hero-delay" as string]: 540 }}
             >
               ClearEdge Solutions designs and manufactures high performance fiber
               optic and copper cabling systems, and electro-mechanical assemblies
@@ -66,38 +42,49 @@ export function Hero() {
 
             <div
               className="mt-10 grid grid-cols-1 gap-4 hero-rise sm:flex sm:flex-wrap sm:items-center"
-              style={{ ["--hero-delay" as string]: 660 }}
+              style={{ ["--hero-delay" as string]: 680 }}
             >
-              <Link href="/capabilities" className="btn btn-primary">
-                Explore Capabilities
-              </Link>
-              <Link href="/contact" className="btn btn-ghost">
+              <Link href="/contact#quote-form" className="btn btn-primary">
                 Request a Quote
+              </Link>
+              <Link href="/capabilities" className="btn btn-ghost">
+                Explore Capabilities
               </Link>
             </div>
           </div>
 
-          {/* technical plate */}
-          <div
-            className="hero-fade relative mx-auto hidden w-full max-w-xl sm:block lg:max-w-none"
-            style={{ ["--hero-delay" as string]: 300 }}
+          {/* engineering artifact — approved T&S photograph, treated as a figure */}
+          <figure
+            className="hero-fade relative mx-auto w-full max-w-md lg:max-w-none"
+            style={{ ["--hero-delay" as string]: 320 }}
           >
-            <div className="reg-corners border border-line bg-bg p-6 md:p-8">
-              <div className="flex items-center justify-between pb-4 text-fg-faint">
-                <span className="label-mono !text-[0.62rem]">FIG. 01</span>
-                <span className="label-mono !text-[0.62rem]">CONNECTOR INTERFACE</span>
+            <div className="plate reg-corners p-4 md:p-6">
+              <figcaption className="plate-head !mb-0 !pb-4">
+                <span className="label-mono !text-[0.62rem] text-fg-faint">FIG. 01</span>
+                <span className="label-mono !text-[0.62rem] text-fg-faint">
+                  MULTI-FIBER TRUNK ASSEMBLY
+                </span>
+              </figcaption>
+              <div className="pt-4">
+                <Image
+                  src={mtpTrunkAssembly}
+                  alt="Multi-fiber trunk cable assembly with an aqua jacket and MPO-style connectors"
+                  priority
+                  sizes="(max-width: 1024px) 90vw, 520px"
+                  className="h-auto w-full object-contain"
+                />
               </div>
-              <div className="hero-svg">
-                <HeroConnector className="w-full text-fg" />
-              </div>
+              <p aria-hidden="true" className="plate-note">
+                ▸ Representative multi-fiber assembly
+              </p>
             </div>
             <p
-              className="label-mono hero-fade mt-4 text-right !text-[0.62rem] text-fg-faint"
-              style={{ ["--hero-delay" as string]: 1900 }}
+              className="label-mono hero-fade mt-4 hidden text-right !text-[0.62rem] text-fg-faint sm:block"
+              style={{ ["--hero-delay" as string]: 1500 }}
             >
-              ENGINEERED PATHWAYS · HIGH-DENSITY INTERCONNECT
+              Engineered pathways · high-density interconnect
             </p>
-          </div>
+          </figure>
         </div>
 
         {/* baseline strip */}

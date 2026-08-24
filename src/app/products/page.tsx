@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Inview } from "@/components/inview";
-import { TechnicalLabel, ArrowLink } from "@/components/ui";
+import { TechnicalLabel, ArrowLink, SectionIndex } from "@/components/ui";
 import { CTASection } from "@/components/cta-section";
 import { productFamilies, industries } from "@/lib/site";
 import {
@@ -53,19 +53,26 @@ export default function ProductsPage() {
         meta="PRODUCT FAMILIES / 03"
       />
 
-      {/* catalog index — scan all three families before the deep sections */}
+      {/* catalog index */}
       <section className="theme-light bg-bg text-fg" aria-label="Product family index">
         <div className="mx-auto max-w-[84rem] px-5 pt-12 md:px-10 lg:pt-16">
-          <div className="grid gap-px border border-line bg-line md:grid-cols-3">
+          <ol className="border-t border-line-strong">
             {productFamilies.map((family) => (
-              <a
-                key={family.id}
-                href={`#${family.id}`}
-                className="group bg-bg p-6 transition-colors duration-200 hover:bg-surface md:p-7"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="label-mono !text-[0.62rem] text-fg-faint transition-colors group-hover:text-accent">
-                    FAMILY {family.index}
+              <li key={family.id}>
+                <a
+                  href={`#${family.id}`}
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-6 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-7"
+                >
+                  <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
+                    {family.index}
+                  </span>
+                  <span>
+                    <span className="type-title block transition-colors duration-200 group-hover:text-accent">
+                      {family.name}
+                    </span>
+                    <span className="mt-1.5 block text-sm text-fg-muted">
+                      {family.tagline}
+                    </span>
                   </span>
                   <svg
                     width="18"
@@ -79,12 +86,10 @@ export default function ProductsPage() {
                   >
                     <path d="M0 5h12M8 1l4 4-4 4" />
                   </svg>
-                </div>
-                <p className="type-title mt-4">{family.name}</p>
-                <p className="mt-2 text-sm text-fg-muted">{family.tagline}</p>
-              </a>
+                </a>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -100,15 +105,12 @@ export default function ProductsPage() {
             }`}
             aria-labelledby={`${family.id}-heading`}
           >
-            <div className="mx-auto max-w-[84rem] px-5 py-16 md:px-10 lg:py-24">
+            <div className="mx-auto max-w-[84rem] px-5 py-16 md:px-10 lg:py-28">
               <Inview>
                 <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
                   {/* content */}
                   <div className={i % 2 === 1 ? "" : "lg:order-2"}>
-                    <p className="label-mono !text-[0.66rem] text-fg-faint">
-                      PRODUCT FAMILY {family.index} /{" "}
-                      {String(productFamilies.length).padStart(2, "0")}
-                    </p>
+                    <SectionIndex n={family.index} />
                     <h2
                       id={`${family.id}-heading`}
                       className="type-display-m mt-4"
@@ -151,9 +153,9 @@ export default function ProductsPage() {
 
                   {/* figure */}
                   <div className={i % 2 === 1 ? "" : "lg:order-1"}>
-                    {family.id === "fiber-optic" ? (
-                      <figure className="reg-corners border border-line bg-surface p-4 md:p-6">
-                        <figcaption className="flex items-center justify-between pb-4">
+                    <Inview delay={120} className="reveal-scale">
+                      <figure className="plate reg-corners p-4 md:p-6">
+                        <figcaption className="plate-head !mb-0">
                           <span className="label-mono !text-[0.62rem] text-fg-faint">
                             FIG. {family.index}
                           </span>
@@ -161,40 +163,26 @@ export default function ProductsPage() {
                             {figureCaptions[family.id]}
                           </span>
                         </figcaption>
-                        <Image
-                          src={mtpTrunkAssembly}
-                          alt="Multi-fiber trunk cable assembly with an aqua jacket and MPO-style connectors"
-                          sizes="(max-width: 1024px) 100vw, 560px"
-                          className="h-auto w-full object-contain"
-                        />
+                        {family.id === "fiber-optic" ? (
+                          <Image
+                            src={mtpTrunkAssembly}
+                            alt="Multi-fiber trunk cable assembly with an aqua jacket and MPO-style connectors"
+                            sizes="(max-width: 1024px) 100vw, 560px"
+                            className="h-auto w-full object-contain pt-4"
+                          />
+                        ) : (
+                          <div className="flex aspect-[850/500] items-center justify-center pt-4">
+                            <Glyph className="h-20 w-20 text-accent md:h-32 md:w-32" />
+                          </div>
+                        )}
                         <p
                           aria-hidden="true"
-                          className="label-mono mt-4 !text-[0.62rem] text-accent"
+                          className="plate-note !mt-4"
                         >
                           ▸ {plateAnnotations[family.id]}
                         </p>
                       </figure>
-                    ) : (
-                      <figure className="reg-corners relative border border-line bg-surface p-10 md:p-14">
-                        <figcaption className="flex items-center justify-between pb-8">
-                          <span className="label-mono !text-[0.62rem] text-fg-faint">
-                            FIG. {family.index}
-                          </span>
-                          <span className="label-mono !text-[0.62rem] text-fg-faint">
-                            {figureCaptions[family.id]}
-                          </span>
-                        </figcaption>
-                        <div className="flex aspect-[850/390] items-center justify-center">
-                          <Glyph className="h-20 w-20 text-accent md:h-32 md:w-32" />
-                        </div>
-                        <p
-                          aria-hidden="true"
-                          className="label-mono mt-4 !text-[0.62rem] text-accent"
-                        >
-                          ▸ {plateAnnotations[family.id]}
-                        </p>
-                      </figure>
-                    )}
+                    </Inview>
                   </div>
                 </div>
               </Inview>
@@ -219,7 +207,7 @@ export default function ProductsPage() {
               </p>
             </Inview>
             <Inview delay={150}>
-              <div className="reg-corners border border-line-strong p-8 md:p-10">
+              <div className="plate reg-corners p-8 md:p-10">
                 <p className="label-mono !text-[0.62rem] text-fg-faint">
                   QUALITY STANDARD
                 </p>

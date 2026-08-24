@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Inview } from "@/components/inview";
 
+/* Technical metadata label — the site's annotation voice.
+   Used sparingly: one per section, never as decoration. */
 export function TechnicalLabel({
   children,
   className = "",
@@ -45,26 +46,17 @@ export function ArrowLink({
   );
 }
 
-export function SectionIntro({
-  eyebrow,
-  title,
-  lede,
+/* Section index — oversized quiet numeral anchoring editorial compositions */
+export function SectionIndex({
+  n,
   className = "",
 }: {
-  eyebrow: string;
-  title: ReactNode;
-  lede?: ReactNode;
+  n: string;
   className?: string;
 }) {
   return (
-    <Inview className={className}>
-      <div className="max-w-3xl">
-        <TechnicalLabel>{eyebrow}</TechnicalLabel>
-        <h2 className="type-display-m mt-6">{title}</h2>
-        {lede ? (
-          <p className="type-lede measure mt-6 text-fg-muted">{lede}</p>
-        ) : null}
-      </div>
-    </Inview>
+    <span aria-hidden="true" className={`type-index block ${className}`}>
+      {n}
+    </span>
   );
 }

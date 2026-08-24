@@ -15,10 +15,6 @@ export function CapabilitiesPreview() {
               <h2 id="cap-heading" className="type-display-l mt-6">
                 Five disciplines. One standard of&nbsp;quality.
               </h2>
-              <p className="type-lede mt-6 text-fg-muted">
-                From fiber to full box build — engineered in-house, built to
-                your print.
-              </p>
             </div>
           </Inview>
           <Inview delay={150}>
@@ -26,6 +22,7 @@ export function CapabilitiesPreview() {
           </Inview>
         </div>
 
+        {/* the canonical expanding-row system */}
         <div className="mt-16 border-t border-line-strong">
           {capabilities.map((cap, i) => {
             const Glyph = capabilityGlyphs[cap.id];
@@ -33,18 +30,18 @@ export function CapabilitiesPreview() {
               <Inview key={cap.id} delay={i * 70}>
                 <Link
                   href={`/capabilities#${cap.id}`}
-                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 border-b border-line-strong py-7 transition-colors duration-200 hover:bg-surface sm:grid-cols-[3.5rem_1fr_1fr_auto] sm:gap-x-8 md:py-8"
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-7 transition-colors duration-200 hover:bg-surface sm:grid-cols-[3.5rem_1fr_1fr_auto] sm:gap-x-10 md:py-9"
                 >
                   <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
                     {cap.index}
                   </span>
-                  <span className="flex items-center gap-4 md:gap-6">
-                    <Glyph className="hidden h-8 w-8 shrink-0 text-fg-faint transition-colors duration-200 group-hover:text-accent sm:block" />
-                    <span className="type-display-m !text-[clamp(1.35rem,1.1rem+1.4vw,2.4rem)] leading-none tracking-tight font-semibold">
+                  <span className="flex items-center gap-5 md:gap-7">
+                    <Glyph className="hidden h-9 w-9 shrink-0 text-fg-faint transition-colors duration-200 group-hover:text-accent sm:block" />
+                    <span className="type-display-m !text-[clamp(1.35rem,1.1rem+1.4vw,2.4rem)] font-semibold leading-none tracking-tight transition-colors duration-200 group-hover:text-accent">
                       {cap.name}
                     </span>
                   </span>
-                  <span className="hidden text-sm text-fg-muted sm:block">
+                  <span className="hidden text-sm text-fg-muted md:block">
                     {cap.tagline}
                   </span>
                   <svg
@@ -64,6 +61,12 @@ export function CapabilitiesPreview() {
             );
           })}
         </div>
+
+        <Inview delay={200}>
+          <p className="label-mono mt-8 !text-[0.62rem] text-fg-faint">
+            Fiber to full box build — engineered in-house, built to your print.
+          </p>
+        </Inview>
       </div>
     </section>
   );

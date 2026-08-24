@@ -45,63 +45,62 @@ export default function CapabilitiesPage() {
         </div>
       </section>
 
+      {/* capability bands — one technical system, five rows */}
       <section className="theme-light bg-bg text-fg">
-        <div className="mx-auto max-w-[84rem] px-5 py-20 md:px-10 lg:py-28">
-          <div className="space-y-6 md:space-y-10">
-            {capabilities.map((cap, i) => {
-              const Glyph = capabilityGlyphs[cap.id];
-              const flipped = i % 2 === 1;
-              return (
-                <Inview key={cap.id}>
-                  <article
-                    id={cap.id}
-                    className="reg-corners scroll-mt-28 border border-line bg-surface"
-                  >
-                    <div
-                      className={`grid gap-8 p-8 md:p-12 lg:grid-cols-[auto_1.2fr_1fr] lg:items-center lg:gap-14 ${
-                        flipped ? "lg:[&>*:first-child]:order-3" : ""
-                      }`}
-                    >
-                      <div className="flex items-center gap-6 lg:w-44 lg:flex-col lg:items-start">
-                        <span className="flex h-20 w-20 items-center justify-center border border-line-strong bg-bg text-fg transition-colors duration-300 hover:border-accent hover:text-accent">
-                          <Glyph className="h-12 w-12" />
-                        </span>
-                        <span className="label-mono !text-[0.7rem] text-fg-faint lg:mt-4">
-                          CAP. {cap.index}
-                        </span>
-                      </div>
-
-                      <div>
-                        <h2 className="type-display-m">{cap.name}</h2>
-                        <p className="label-mono mt-4 !tracking-[0.16em] text-accent">
-                          {cap.tagline}
-                        </p>
-                      </div>
-
-                      <div className="border-t border-line pt-6 lg:border-l lg:border-t-0 lg:pl-14 lg:pt-0">
-                        <p className="type-body text-fg-muted">{cap.description}</p>
-                        <Link
-                          href={`/contact?capability=${cap.id}#quote-form`}
-                          className="text-link mt-7"
-                        >
-                          Discuss this capability
-                          <svg className="text-link-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                            <path d="M0 5h12M8 1l4 4-4 4" />
-                          </svg>
-                        </Link>
-                      </div>
+        <div className="mx-auto max-w-[84rem] px-5 py-16 md:px-10 lg:py-24">
+          {capabilities.map((cap, i) => {
+            const Glyph = capabilityGlyphs[cap.id];
+            return (
+              <Inview key={cap.id}>
+                <article
+                  id={cap.id}
+                  className={`scroll-mt-28 border-b border-line py-10 md:py-14 ${
+                    i === 0 ? "border-t border-line-strong" : ""
+                  }`}
+                >
+                  <div className="grid gap-8 lg:grid-cols-[7rem_auto_1fr_1.1fr] lg:items-start lg:gap-x-14">
+                    {/* index + glyph */}
+                    <div className="flex items-center justify-between gap-6 lg:flex-col lg:items-start lg:justify-start lg:gap-8">
+                      <span className="type-display-m !text-[clamp(1.8rem,1.5rem+2vw,3rem)] font-medium leading-none tracking-tight text-fg-faint">
+                        {cap.index}
+                      </span>
+                      <Glyph className="h-11 w-11 shrink-0 text-accent" />
                     </div>
-                  </article>
-                </Inview>
-              );
-            })}
-          </div>
+
+                    {/* name */}
+                    <div className="lg:w-64">
+                      <h2 className="type-display-m !text-[clamp(1.6rem,1.35rem+1.4vw,2.5rem)] leading-[1.04]">
+                        {cap.name}
+                      </h2>
+                      <p className="label-mono mt-4 !text-[0.62rem] !tracking-[0.14em] text-fg-muted">
+                        {cap.tagline}
+                      </p>
+                    </div>
+
+                    {/* description */}
+                    <div className="lg:border-l lg:border-line lg:pl-14 lg:pt-1">
+                      <p className="type-body max-w-xl text-fg-muted">{cap.description}</p>
+                      <Link
+                        href={`/contact?capability=${cap.id}#quote-form`}
+                        className="text-link mt-7"
+                      >
+                        Discuss this capability
+                        <svg className="text-link-arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                          <path d="M0 5h12M8 1l4 4-4 4" />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </Inview>
+            );
+          })}
         </div>
       </section>
 
       {/* engineering collaboration note */}
-      <section className="bg-bg text-fg" aria-labelledby="collab-heading">
-        <div className="mx-auto grid max-w-[84rem] items-center gap-10 px-5 py-20 md:px-10 lg:grid-cols-[1fr_1fr] lg:py-32">
+      <section className="bg-bg-deep text-fg" aria-labelledby="collab-heading">
+        <div className="mx-auto grid max-w-[84rem] items-center gap-12 px-5 py-20 md:px-10 lg:grid-cols-[1fr_1fr] lg:py-32">
           <Inview>
             <TechnicalLabel>How we engage</TechnicalLabel>
             <h2 id="collab-heading" className="type-display-m mt-6 max-w-xl">
@@ -117,14 +116,14 @@ export default function CapabilitiesPage() {
               Start the conversation
             </ArrowLink>
           </Inview>
-          <Inview delay={150}>
-            <div className="reg-corners border border-line p-8 md:p-10">
+          <Inview delay={150} className="reveal-scale">
+            <figure className="plate reg-corners p-8 md:p-10">
               <EngineeringGlyph className="h-12 w-12 text-accent" />
-              <p className="mt-6 text-sm leading-relaxed text-fg-muted">
+              <figcaption className="mt-6 text-sm leading-relaxed text-fg-muted">
                 Quality standard: ISO certified manufacturing with strict
                 quality standards maintained throughout our processes.
-              </p>
-            </div>
+              </figcaption>
+            </figure>
           </Inview>
         </div>
       </section>

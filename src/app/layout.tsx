@@ -1,13 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Sora, Manrope, IBM_Plex_Mono } from "next/font/google";
 import { company } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const inter = Inter({
+const sora = Sora({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["500", "600", "700"],
+  variable: "--font-sora",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -17,6 +25,7 @@ const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   display: "swap",
 });
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(company.url),
@@ -67,7 +76,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plexMono.variable}`}
+      className={`${sora.variable} ${manrope.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <head>

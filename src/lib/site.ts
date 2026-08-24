@@ -17,10 +17,10 @@ export const company = {
 } as const;
 
 export const navItems = [
-  { href: "/about", label: "About" },
   { href: "/products", label: "Products" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/industries", label: "Industries" },
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ] as const;
 

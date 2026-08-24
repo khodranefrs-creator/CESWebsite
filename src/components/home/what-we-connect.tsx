@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Inview } from "@/components/inview";
-import { TechnicalLabel } from "@/components/ui";
+import { TechnicalLabel, SectionIndex } from "@/components/ui";
 import {
   FiberGlyph,
   CopperGlyph,
@@ -11,6 +11,7 @@ const pathways = [
   {
     id: "fiber",
     familyId: "fiber-optic",
+    index: "01",
     glyph: FiberGlyph,
     name: "Fiber Optic",
     note: "High performance cabling systems for speed-critical applications.",
@@ -18,6 +19,7 @@ const pathways = [
   {
     id: "copper",
     familyId: "copper-cabling",
+    index: "02",
     glyph: CopperGlyph,
     name: "Copper",
     note: "Copper cabling systems built for dependable everyday throughput.",
@@ -25,6 +27,7 @@ const pathways = [
   {
     id: "em",
     familyId: "electro-mechanical",
+    index: "03",
     glyph: BoxBuildGlyph,
     name: "Electro-Mechanical",
     note: "Box build assemblies that integrate connectivity into complete systems.",
@@ -34,11 +37,12 @@ const pathways = [
 export function WhatWeConnect() {
   return (
     <section id="what-we-connect" className="theme-light bg-bg text-fg" aria-labelledby="wwc-heading">
-      <div className="mx-auto grid max-w-[84rem] gap-16 px-5 py-24 md:px-10 lg:grid-cols-2 lg:gap-10 lg:py-36">
+      <div className="mx-auto grid max-w-[84rem] gap-16 px-5 py-24 md:px-10 lg:grid-cols-[1fr_1.25fr] lg:gap-20 lg:py-36">
         {/* statement */}
         <div className="lg:sticky lg:top-32 lg:self-start">
           <Inview>
-            <TechnicalLabel>What we connect</TechnicalLabel>
+            <SectionIndex n="01" />
+            <TechnicalLabel className="mt-6">What we connect</TechnicalLabel>
             <h2 id="wwc-heading" className="type-display-l mt-6">
               One engineering partner across the entire signal&nbsp;path.
             </h2>
@@ -52,39 +56,31 @@ export function WhatWeConnect() {
           </Inview>
         </div>
 
-        {/* connected product universe */}
-        <div className="relative">
-          {/* vertical connection rail — centered on the glyph column
-              (sm:p-8 padding + half of the 3.3rem icon box) */}
-          <span
-            aria-hidden="true"
-            className="absolute bottom-10 left-[3.65rem] top-10 hidden w-[1px] bg-line sm:block"
-          />
-          <ol className="space-y-4">
+        {/* numbered editorial rows — one row per product pathway */}
+        <div>
+          <ol className="border-t border-line-strong">
             {pathways.map((item, i) => {
               const Glyph = item.glyph;
               return (
                 <li key={item.id}>
-                  <Inview delay={i * 120}>
+                  <Inview delay={i * 110}>
                     <Link
                       href={`/products#${item.familyId}`}
                       aria-label={`${item.name} — view product family`}
-                      className="reg-corners group relative flex items-start gap-7 border border-line bg-surface p-7 transition-colors duration-300 hover:border-accent sm:p-8"
+                      className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-8 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-10"
                     >
-                      <span className="relative z-10 flex h-[3.3rem] w-[3.3rem] shrink-0 items-center justify-center border border-line-strong bg-bg text-fg transition-colors duration-300 group-hover:border-accent group-hover:text-accent">
-                        <Glyph className="h-9 w-9" />
+                      <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
+                        {item.index}
                       </span>
-                      <div>
-                        <p className="label-mono !text-[0.62rem] text-fg-faint">
-                          Pathway {String(i + 1).padStart(2, "0")}
-                        </p>
-                        <h3 className="type-title mt-2">{item.name}</h3>
-                        <p className="type-body mt-2 text-fg-muted">{item.note}</p>
-                      </div>
-                      <span
-                        aria-hidden="true"
-                        className="ml-auto mt-1 hidden h-2 w-2 shrink-0 rounded-full border border-line-strong transition-colors duration-300 group-hover:border-accent group-hover:bg-accent lg:block"
-                      />
+                      <span>
+                        <span className="type-display-m !text-[clamp(1.5rem,1.2rem+1.7vw,2.75rem)] block leading-none tracking-tight transition-colors duration-200 group-hover:text-accent">
+                          {item.name}
+                        </span>
+                        <span className="mt-3 block max-w-md text-sm leading-relaxed text-fg-muted">
+                          {item.note}
+                        </span>
+                      </span>
+                      <Glyph className="hidden h-11 w-11 shrink-0 text-fg-faint transition-colors duration-200 group-hover:text-accent sm:block" />
                     </Link>
                   </Inview>
                 </li>
@@ -92,9 +88,9 @@ export function WhatWeConnect() {
             })}
           </ol>
 
-          <Inview delay={380}>
+          <Inview delay={360}>
             <p className="label-mono mt-8 !text-[0.62rem] text-fg-faint">
-              <span>Serving data centers · semiconductor equipment · automotive · clean energy</span>
+              Serving data centers · semiconductor equipment · automotive · clean energy
             </p>
           </Inview>
         </div>

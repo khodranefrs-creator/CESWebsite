@@ -33,60 +33,61 @@ export default function IndustriesPage() {
         meta="TECHNOLOGY-DRIVEN APPLICATIONS"
       />
 
-      {industries.map((industry, i) => {
-        const Glyph = industryGlyphs[industry.id];
-        const dark = i % 2 === 1;
-        return (
-          <section
-            key={industry.id}
-            id={industry.id}
-            className={`scroll-mt-24 ${
-              dark ? "bg-bg-deep text-fg" : "theme-light bg-bg text-fg"
-            }`}
-            aria-labelledby={`${industry.id}-heading`}
-          >
-            <div className="mx-auto max-w-[84rem] px-5 py-16 md:px-10 lg:py-24">
-              <Inview>
-                <div className="grid items-center gap-10 md:grid-cols-[auto_1fr_auto] md:gap-14">
-                  <span
-                    className={`flex h-28 w-28 items-center justify-center border md:h-36 md:w-36 ${
-                      dark ? "border-line-strong" : "border-line-strong bg-surface"
-                    }`}
-                  >
-                    <Glyph className="h-16 w-16 text-accent md:h-20 md:w-20" />
-                  </span>
-                  <div>
-                    <p className="label-mono !text-[0.66rem] text-fg-faint">
-                      INDUSTRY {industry.index} / {String(industries.length).padStart(2, "0")}
-                    </p>
-                    <h2 id={`${industry.id}-heading`} className="type-display-m mt-4">
-                      {industry.name}
-                    </h2>
-                    <p className="type-lede measure mt-5 text-fg-muted">
-                      {industry.line}
-                    </p>
+      {/* editorial list */}
+      <section className="theme-light bg-bg text-fg">
+        <div className="mx-auto max-w-[84rem] px-5 py-16 md:px-10 lg:py-24">
+          {industries.map((industry, i) => {
+            const Glyph = industryGlyphs[industry.id];
+            return (
+              <Inview key={industry.id}>
+                <article
+                  id={industry.id}
+                  className={`group scroll-mt-28 border-b border-line py-10 md:py-14 ${
+                    i === 0 ? "border-t border-line-strong" : ""
+                  }`}
+                  aria-labelledby={`${industry.id}-heading`}
+                >
+                  <div className="grid gap-8 lg:grid-cols-[7rem_1fr_auto] lg:items-start lg:gap-x-14">
+                    <span className="type-display-m !text-[clamp(1.8rem,1.5rem+2vw,3rem)] font-medium leading-none tracking-tight text-fg-faint transition-colors duration-200 group-hover:text-accent">
+                      {industry.index}
+                    </span>
+
+                    <div>
+                      <h2
+                        id={`${industry.id}-heading`}
+                        className="type-display-m !text-[clamp(1.7rem,1.45rem+1.6vw,2.75rem)] leading-[1.04]"
+                      >
+                        {industry.name}
+                      </h2>
+                      <p className="type-lede mt-4 max-w-xl !text-[1.05rem] text-fg-muted">
+                        {industry.line}
+                      </p>
+
+                      {/* related products — derived from verified applications */}
+                      <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-line pt-5">
+                        <span className="label-mono !text-[0.6rem] text-fg-faint">
+                          Related products
+                        </span>
+                        {relatedFamilies(industry.id).map((family) => (
+                          <Link
+                            key={family.id}
+                            href={`/products#${family.id}`}
+                            className="text-sm text-fg-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
+                          >
+                            {family.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Glyph className="hidden h-14 w-14 shrink-0 text-fg-faint transition-colors duration-200 group-hover:text-accent lg:block" />
                   </div>
-                  <ul className="space-y-3 md:w-64">
-                    <li className="label-mono hidden !text-[0.6rem] text-fg-faint md:block">
-                      RELATED PRODUCTS
-                    </li>
-                    {relatedFamilies(industry.id).map((family) => (
-                      <li key={family.id}>
-                        <Link
-                          href={`/products#${family.id}`}
-                          className="text-sm text-fg-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
-                        >
-                          {family.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                </article>
               </Inview>
-            </div>
-          </section>
-        );
-      })}
+            );
+          })}
+        </div>
+      </section>
 
       <CTASection />
     </>

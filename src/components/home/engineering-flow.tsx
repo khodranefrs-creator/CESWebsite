@@ -4,9 +4,8 @@ import { flowSteps } from "@/lib/site";
 
 export function EngineeringFlow() {
   return (
-    <section className="relative overflow-hidden bg-bg-deep text-fg" aria-labelledby="flow-heading">
-      <div className="bp-grid absolute inset-0 opacity-50" aria-hidden="true" />
-      <div className="relative mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
+    <section className="relative bg-bg-deep text-fg" aria-labelledby="flow-heading">
+      <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
         <Inview>
           <div className="flex flex-wrap items-end justify-between gap-8">
             <div className="max-w-2xl">
@@ -14,10 +13,6 @@ export function EngineeringFlow() {
               <h2 id="flow-heading" className="type-display-l mt-6">
                 Your requirements, carried all the way&nbsp;through.
               </h2>
-              <p className="type-lede mt-6 text-fg-muted">
-                Our engineering and manufacturing teams collaborate with yours —
-                from first design conversation to finished production.
-              </p>
             </div>
             <p className="label-mono !text-[0.62rem] text-fg-faint" aria-hidden="true">
               PROCESS DIAGRAM · CLEAREDGE ↔ CUSTOMER
@@ -53,7 +48,7 @@ export function EngineeringFlow() {
                   <span className="h-1.5 w-1.5 bg-accent" />
                 </span>
                 <p className="label-mono !text-[0.62rem] text-fg-faint">{step.step}</p>
-                <h3 className="mt-3 text-xl font-semibold tracking-tight">
+                <h3 className="mt-3 font-display text-xl font-semibold tracking-tight">
                   {step.name}
                 </h3>
                 <p className="mt-3 max-w-xs text-sm leading-relaxed text-fg-muted">
