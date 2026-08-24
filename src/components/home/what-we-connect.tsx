@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Inview } from "@/components/inview";
-import { TechnicalLabel, SectionIndex } from "@/components/ui";
+import { TechnicalLabel, SectionIndex, ArrowLink } from "@/components/ui";
 import {
   FiberGlyph,
   CopperGlyph,
@@ -11,7 +11,7 @@ const pathways = [
   {
     id: "fiber",
     familyId: "fiber-optic",
-    index: "01",
+    tag: "ST.01",
     glyph: FiberGlyph,
     name: "Fiber Optic",
     note: "High performance cabling systems for speed-critical applications.",
@@ -19,7 +19,7 @@ const pathways = [
   {
     id: "copper",
     familyId: "copper-cabling",
-    index: "02",
+    tag: "ST.02",
     glyph: CopperGlyph,
     name: "Copper",
     note: "Copper cabling systems built for dependable everyday throughput.",
@@ -27,7 +27,7 @@ const pathways = [
   {
     id: "em",
     familyId: "electro-mechanical",
-    index: "03",
+    tag: "ST.03",
     glyph: BoxBuildGlyph,
     name: "Electro-Mechanical",
     note: "Box build assemblies that integrate connectivity into complete systems.",
@@ -53,47 +53,78 @@ export function WhatWeConnect() {
               and manufactures advanced connectivity and assembly solutions that
               keep technology moving.
             </p>
+            <ArrowLink href="/products" className="mt-9">
+              View products
+            </ArrowLink>
           </Inview>
         </div>
 
-        {/* numbered editorial rows — one row per product pathway */}
-        <div>
-          <ol className="border-t border-line-strong">
-            {pathways.map((item, i) => {
-              const Glyph = item.glyph;
-              return (
-                <li key={item.id}>
-                  <Inview delay={i * 110}>
-                    <Link
-                      href={`/products#${item.familyId}`}
-                      aria-label={`${item.name} — view product family`}
-                      className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-8 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-10"
+        {/* signal-path diagram — three stations on one drawn line */}
+        <Inview variant="flow" threshold={0.3}>
+          <div className="relative">
+            {/* desktop conductor — aligned to node centers (tag 16 + mb 16 + half node 40 = 72px) */}
+            <svg
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 top-[4rem] hidden h-4 w-full lg:block"
+              viewBox="0 0 1000 16"
+              preserveAspectRatio="none"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path className="flow-path text-fg-faint" d="M4 8 H 996" strokeWidth="1.5" pathLength={1} />
+            </svg>
+            {/* endpoint nodes */}
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-[calc(4rem+5px)] hidden h-1.5 w-1.5 rounded-full bg-accent lg:block"
+            />
+            <span
+              aria-hidden="true"
+              className="absolute right-0 top-[calc(4rem+5px)] hidden h-1.5 w-1.5 rounded-full bg-accent lg:block"
+            />
+
+            <ol className="relative space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-10 lg:space-y-0">
+              {/* mobile rail */}
+              <span
+                aria-hidden="true"
+                className="absolute bottom-10 left-[39px] top-10 w-[2px] bg-line-strong lg:hidden"
+              />
+              {pathways.map((item) => {
+                const Glyph = item.glyph;
+                return (
+                  <li key={item.id} className="relative pl-24 lg:pl-0">
+                    <p className="label-mono mb-4 h-4 !leading-none !text-[0.62rem] text-fg-faint lg:mb-4">
+                      {item.tag}
+                    </p>
+                    {/* station node sits on the line */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-8 flex h-20 w-20 items-center justify-center border border-line-strong bg-bg lg:relative lg:top-0 lg:left-0"
                     >
-                      <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
-                        {item.index}
-                      </span>
-                      <span>
-                        <span className="type-display-m !text-[clamp(1.5rem,1.2rem+1.7vw,2.75rem)] block leading-none tracking-tight transition-colors duration-200 group-hover:text-accent">
-                          {item.name}
-                        </span>
-                        <span className="mt-3 block max-w-md text-sm leading-relaxed text-fg-muted">
-                          {item.note}
-                        </span>
-                      </span>
-                      <Glyph className="hidden h-11 w-11 shrink-0 text-fg-faint transition-colors duration-200 group-hover:text-accent sm:block" />
-                    </Link>
-                  </Inview>
-                </li>
-              );
-            })}
-          </ol>
+                      <Glyph className="h-9 w-9 text-fg" />
+                      <span className="absolute -right-[3px] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent" />
+                    </span>
+                    <h3 className="mt-7 font-display text-[1.3rem] font-semibold leading-none tracking-tight lg:mt-6">
+                      <Link
+                        href={`/products#${item.familyId}`}
+                        className="transition-colors duration-200 hover:text-accent"
+                      >
+                        {item.name}
+                      </Link>
+                    </h3>
+                    <p className="mt-2.5 max-w-xs text-sm leading-relaxed text-fg-muted">
+                      {item.note}
+                    </p>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
 
-          <Inview delay={360}>
-            <p className="label-mono mt-8 !text-[0.62rem] text-fg-faint">
-              Serving data centers · semiconductor equipment · automotive · clean energy
-            </p>
-          </Inview>
-        </div>
+          <p className="label-mono mt-14 border-t border-line pt-5 !text-[0.62rem] text-fg-faint">
+            Serving data centers · semiconductor equipment · automotive · clean energy
+          </p>
+        </Inview>
       </div>
     </section>
   );

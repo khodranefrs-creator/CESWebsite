@@ -6,16 +6,18 @@ export function SiteFooter() {
   return (
     <footer className="theme-light border-t border-line bg-bg-deep text-fg">
       <div className="mx-auto max-w-[84rem] px-5 pb-14 pt-16 md:px-10 md:pt-20">
-        <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr_1.25fr] lg:gap-20">
+        {/* closing statement */}
+        <p className="font-display max-w-4xl text-[clamp(1.9rem,1.1rem+3vw,3.25rem)] font-semibold leading-[1.04] tracking-tight">
+          Your Partner For Connectivity<span className="text-accent">.</span>
+        </p>
+
+        <div className="mt-14 grid gap-14 lg:grid-cols-[1.5fr_1fr_1.25fr] lg:gap-20 lg:pt-2">
           {/* brand block */}
           <div>
             <Link href="/" aria-label="ClearEdge Solutions — home" className="inline-flex">
               <BrandLogo sizes="(max-width: 767px) 96px, 110px" className="h-16 w-auto md:h-[4.5rem]" />
             </Link>
-            <p className="label-mono mt-8 !tracking-[0.16em] text-accent">
-              {company.slogan}
-            </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-fg-muted">
               Designer and manufacturer of high performance fiber optic and
               copper cabling systems, and electro-mechanical assemblies.
             </p>

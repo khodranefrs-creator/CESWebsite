@@ -6,7 +6,7 @@ import { industryGlyphs } from "@/components/graphics";
 
 export function IndustriesSection() {
   return (
-    <section className="theme-light bg-bg text-fg" aria-labelledby="ind-heading">
+    <section className="relative bg-bg-deep text-fg" aria-labelledby="ind-heading">
       <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
         <div className="flex flex-wrap items-end justify-between gap-8">
           <Inview>
@@ -34,13 +34,13 @@ export function IndustriesSection() {
                 <Link
                   href={`/industries#${industry.id}`}
                   aria-label={`${industry.name} — serving this industry`}
-                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-8 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-9"
+                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-8 sm:gap-x-10 md:py-9"
                 >
-                  <span className="type-display-m !text-[clamp(1.6rem,1.3rem+1.8vw,3rem)] font-medium leading-none tracking-tight text-fg-faint transition-colors duration-200 group-hover:text-accent">
+                  <span className="type-display-m !text-[clamp(1.6rem,1.3rem+1.8vw,3rem)] font-medium leading-none tracking-tight text-fg-faint transition-colors duration-200 group-hover:text-fg">
                     {industry.index}
                   </span>
                   <span>
-                    <span className="type-display-m !text-[clamp(1.5rem,1.25rem+1.7vw,2.75rem)] block leading-none tracking-tight transition-colors duration-200 group-hover:text-accent">
+                    <span className="type-display-m !text-[clamp(1.5rem,1.25rem+1.7vw,2.75rem)] block leading-none tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-accent">
                       {industry.name}
                     </span>
                     <span className="mt-3 block max-w-xl text-sm leading-relaxed text-fg-muted">

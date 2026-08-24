@@ -38,7 +38,7 @@ export function CTASection() {
           aria-hidden="true"
           className="pointer-events-none mt-16 hidden items-center justify-between text-fg-faint md:flex"
         >
-          <span className="label-mono !text-[0.6rem]">{company.shortName} — {company.slogan}</span>
+          <span className="label-mono !text-[0.6rem]">{company.shortName} Solutions</span>
           <span className="rule-ticks-y h-8 w-[1px]" />
           <span className="label-mono !text-[0.6rem]">SAN JOSE · CALIFORNIA</span>
         </div>

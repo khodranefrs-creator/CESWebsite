@@ -58,6 +58,14 @@ export function Hero() {
             className="hero-fade relative mx-auto w-full max-w-md lg:max-w-none"
             style={{ ["--hero-delay" as string]: 320 }}
           >
+            {/* conductor bridging statement and artifact */}
+            <span
+              aria-hidden="true"
+              className="absolute top-1/2 hidden h-[1px] w-16 -translate-y-[2px] lg:-left-16 lg:block"
+            >
+              <span className="absolute inset-x-0 top-0 h-[1px] bg-line-strong" />
+              <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent bg-bg-deep" />
+            </span>
             <div className="plate reg-corners p-4 md:p-6">
               <figcaption className="plate-head !mb-0 !pb-4">
                 <span className="label-mono !text-[0.62rem] text-fg-faint">FIG. 01</span>

@@ -1,16 +1,17 @@
 import { Inview } from "@/components/inview";
-import { TechnicalLabel } from "@/components/ui";
 import { flowSteps } from "@/lib/site";
 
 export function EngineeringFlow() {
   return (
-    <section className="relative bg-bg-deep text-fg" aria-labelledby="flow-heading">
-      <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
+    <section
+      className="theme-light relative border-t-2 border-line-strong bg-bg text-fg"
+      aria-labelledby="flow-heading"
+    >
+      <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-32">
         <Inview>
           <div className="flex flex-wrap items-end justify-between gap-8">
             <div className="max-w-2xl">
-              <TechnicalLabel>Engineering to production</TechnicalLabel>
-              <h2 id="flow-heading" className="type-display-l mt-6">
+              <h2 id="flow-heading" className="type-display-l">
                 Your requirements, carried all the way&nbsp;through.
               </h2>
             </div>
@@ -43,7 +44,7 @@ export function EngineeringFlow() {
               <li key={step.id} className="flow-node relative pl-10 md:pl-0">
                 <span
                   aria-hidden="true"
-                  className="absolute left-0 top-0 flex h-4 w-4 items-center justify-center border border-line-strong bg-bg-deep md:relative md:left-0 md:mb-8 md:inline-flex"
+                  className="absolute left-0 top-0 flex h-4 w-4 items-center justify-center border border-line-strong bg-bg md:relative md:left-0 md:mb-8 md:inline-flex"
                 >
                   <span className="h-1.5 w-1.5 bg-accent" />
                 </span>

@@ -4,13 +4,19 @@ import { differentiators } from "@/lib/site";
 
 export function WhyClearEdge() {
   return (
-    <section className="bg-bg-deep text-fg" aria-labelledby="why-heading">
+    <section className="theme-light bg-bg text-fg" aria-labelledby="why-heading">
       <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
         <Inview>
           <TechnicalLabel>Why ClearEdge</TechnicalLabel>
           <h2 id="why-heading" className="type-giant mt-8 max-w-5xl">
             <span className="block">Precision isn&rsquo;t a feature.</span>
-            <span className="mt-2 block text-accent">It&rsquo;s the standard.</span>
+            <span className="mt-2 block">
+              It&rsquo;s the standard.
+              <span
+                aria-hidden="true"
+                className="mt-7 block h-[3px] w-28 bg-accent lg:w-40"
+              />
+            </span>
           </h2>
           <p className="type-lede measure-tight mt-12 text-fg-muted">
             The difference is in how we build — precision engineering and
@@ -40,7 +46,7 @@ export function WhyClearEdge() {
           </ol>
 
           <Inview delay={160}>
-            <figure className="reg-corners border border-line p-8 md:p-9">
+            <figure className="reg-corners border border-line bg-surface p-8 md:p-9">
               <blockquote>
                 <p className="type-lede leading-relaxed text-fg-muted">
                   &ldquo;We partner with our customers to transform ideas into

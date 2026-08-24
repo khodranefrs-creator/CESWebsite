@@ -199,6 +199,10 @@ export function SiteHeader() {
             role="group"
             aria-label="Product families"
           >
+            <div className="mx-auto flex max-w-[84rem] items-center justify-between px-5 pb-4 pt-6 md:px-10">
+              <p className="label-mono !text-[0.6rem] text-fg-faint">Product directory</p>
+              <p className="label-mono !text-[0.6rem] text-fg-faint">03 families</p>
+            </div>
             <div className="mx-auto grid max-w-[84rem] gap-px bg-line px-0 md:grid-cols-[1fr_1fr_1fr_0.9fr]">
               {productFamilies.map((family) => (
                 <Link

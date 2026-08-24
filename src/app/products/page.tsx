@@ -53,39 +53,42 @@ export default function ProductsPage() {
         meta="PRODUCT FAMILIES / 03"
       />
 
-      {/* catalog index */}
-      <section className="theme-light bg-bg text-fg" aria-label="Product family index">
+      {/* product directory */}
+      <section className="theme-light bg-bg text-fg" aria-label="Product family directory">
         <div className="mx-auto max-w-[84rem] px-5 pt-12 md:px-10 lg:pt-16">
-          <ol className="border-t border-line-strong">
+          <ol className="grid gap-px border border-line bg-line sm:grid-cols-3">
             {productFamilies.map((family) => (
               <li key={family.id}>
                 <a
                   href={`#${family.id}`}
-                  className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-6 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-7"
+                  aria-label={`${family.name} — jump to family`}
+                  className="group flex h-full flex-col justify-between gap-10 bg-bg p-6 transition-colors duration-200 hover:bg-surface md:p-7"
                 >
-                  <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
-                    {family.index}
+                  <span className="flex items-center justify-between">
+                    <span className="label-mono !text-[0.62rem] text-fg-faint transition-colors group-hover:text-accent">
+                      FAMILY {family.index}
+                    </span>
+                    <svg
+                      width="18"
+                      height="14"
+                      viewBox="0 0 14 10"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      aria-hidden="true"
+                      className="text-fg-faint transition-all duration-200 group-hover:translate-x-1.5 group-hover:text-accent"
+                    >
+                      <path d="M0 5h12M8 1l4 4-4 4" />
+                    </svg>
                   </span>
                   <span>
                     <span className="type-title block transition-colors duration-200 group-hover:text-accent">
                       {family.name}
                     </span>
-                    <span className="mt-1.5 block text-sm text-fg-muted">
+                    <span className="mt-2 block text-sm leading-relaxed text-fg-muted">
                       {family.tagline}
                     </span>
                   </span>
-                  <svg
-                    width="18"
-                    height="14"
-                    viewBox="0 0 14 10"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    aria-hidden="true"
-                    className="text-fg-faint transition-all duration-200 group-hover:translate-x-1.5 group-hover:text-accent"
-                  >
-                    <path d="M0 5h12M8 1l4 4-4 4" />
-                  </svg>
                 </a>
               </li>
             ))}
