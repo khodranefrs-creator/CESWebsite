@@ -71,7 +71,7 @@ export function SiteHeader() {
             className="flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80"
             aria-label="ClearEdge Solutions — home"
           >
-            <BrandLogo priority sizes="(max-width: 767px) 60px, 96px" className="h-10 w-auto md:h-16" />
+            <BrandLogo priority sizes="(max-width: 767px) 66px, 96px" className="h-11 w-auto md:h-16" />
           </Link>
 
           <nav aria-label="Primary" className="hidden lg:block">
@@ -138,7 +138,7 @@ export function SiteHeader() {
             className="flex shrink-0 items-center"
             aria-label="ClearEdge Solutions — home"
           >
-            <BrandLogo priority sizes="(max-width: 639px) 54px, 60px" className="h-9 w-auto sm:h-10" />
+            <BrandLogo priority sizes="66px" className="h-11 w-auto" />
           </Link>
           <button
             type="button"
@@ -154,34 +154,87 @@ export function SiteHeader() {
 
         <nav
           aria-label="Mobile"
-          className="menu-enter flex flex-1 flex-col overflow-y-auto px-5 pb-10 pt-6 md:px-10"
+          className="menu-enter flex flex-1 flex-col overflow-y-auto px-5 pt-4 md:px-10 [padding-bottom:max(2.5rem,env(safe-area-inset-bottom))]"
         >
           <ul className="flex flex-col">
-            {navItems.map((item, i) => (
-              <li key={item.href} className="hairline-b">
-                <Link href={item.href} className="group flex items-baseline justify-between py-5">
-                  <span className="type-display-m group-hover:text-accent transition-colors">
-                    {item.label}
-                  </span>
-                  <span className="label-mono text-fg-faint">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                </Link>
-              </li>
-            ))}
+            <li className="hairline-b">
+              <Link
+                href="/"
+                onClick={() => setOpen(false)}
+                aria-current={pathname === "/" ? "page" : undefined}
+                className="group flex items-center justify-between py-5"
+              >
+                <span
+                  className={`relative type-display-m transition-colors ${
+                    pathname === "/"
+                      ? "text-accent after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:content-['']"
+                      : "group-hover:text-accent"
+                  }`}
+                >
+                  Home
+                </span>
+                <span className={`label-mono ${pathname === "/" ? "text-accent" : "text-fg-faint"}`}>
+                  00
+                </span>
+              </Link>
+            </li>
+            {navItems.map((item, i) => {
+              const active = pathname.startsWith(item.href);
+              return (
+                <li key={item.href} className="hairline-b">
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className="group flex items-center justify-between py-5"
+                  >
+                    <span
+                      className={`relative type-display-m transition-colors ${
+                        active
+                          ? "text-accent after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:content-['']"
+                          : "group-hover:text-accent"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                    <span className={`label-mono ${active ? "text-accent" : "text-fg-faint"}`}>
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
-          <Link href="/contact" className="btn btn-primary mt-8 w-full">
+          <Link href="/contact#quote-form" onClick={() => setOpen(false)} className="btn btn-primary mt-8 w-full">
             Request a Quote
           </Link>
 
-          <div className="mt-10 space-y-2 text-sm text-fg-muted">
-            <p>{company.address.street}, {company.address.city}, {company.address.state} {company.address.zip}</p>
-            <p>
-              <a className="hover:text-accent" href={`tel:${company.phoneHref}`}>{company.phone}</a>
-              {" · "}
-              <a className="hover:text-accent" href={`mailto:${company.email}`}>{company.email}</a>
-            </p>
+          {/* direct lines directory */}
+          <div className="mt-8">
+            <p className="label-mono !text-[0.62rem] text-fg-faint">Direct lines</p>
+            <ul className="mt-3 border-t border-line">
+              <li className="border-b border-line">
+                <a href={`tel:${company.phoneHref}`} className="group flex items-baseline justify-between gap-6 py-3.5">
+                  <span className="label-mono shrink-0 !text-[0.62rem] text-fg-faint transition-colors group-hover:text-accent">Call</span>
+                  <span className="text-right text-sm font-medium">{company.phone}</span>
+                </a>
+              </li>
+              <li className="border-b border-line">
+                <a href={`mailto:${company.email}`} className="group flex items-baseline justify-between gap-6 py-3.5">
+                  <span className="label-mono shrink-0 !text-[0.62rem] text-fg-faint transition-colors group-hover:text-accent">Email</span>
+                  <span className="text-right text-sm font-medium">{company.email}</span>
+                </a>
+              </li>
+              <li className="border-b border-line">
+                <div className="flex items-baseline justify-between gap-6 py-3.5">
+                  <span className="label-mono shrink-0 !text-[0.62rem] text-fg-faint">Visit</span>
+                  <span className="text-right text-sm font-medium">
+                    {company.address.street}, {company.address.city}, {company.address.state} {company.address.zip}
+                  </span>
+                </div>
+              </li>
+            </ul>
           </div>
         </nav>
       </div>

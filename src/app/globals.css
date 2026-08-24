@@ -440,7 +440,8 @@ html:not(.js) .hero-svg rect {
 /* ------------------------------------------- mobile menu entrance */
 
 /* Plays each time the panel flips from display:none to flex, so no
-   extra JS state is needed. Disabled globally under reduced motion. */
+   extra JS state is needed. Items stagger individually; the CTA and
+   directory follow. Disabled globally under reduced motion. */
 @keyframes menu-item-in {
   from {
     opacity: 0;
@@ -452,14 +453,20 @@ html:not(.js) .hero-svg rect {
   }
 }
 
-.menu-enter > * {
+.menu-enter ul > li,
+.menu-enter > a,
+.menu-enter > div {
   opacity: 0;
   animation: menu-item-in 480ms var(--ease-out-engineered) forwards;
 }
-.menu-enter > *:nth-child(1) { animation-delay: 60ms; }
-.menu-enter > *:nth-child(2) { animation-delay: 140ms; }
-.menu-enter > *:nth-child(3) { animation-delay: 220ms; }
-.menu-enter > *:nth-child(4) { animation-delay: 300ms; }
+.menu-enter ul > li:nth-child(1) { animation-delay: 50ms; }
+.menu-enter ul > li:nth-child(2) { animation-delay: 110ms; }
+.menu-enter ul > li:nth-child(3) { animation-delay: 170ms; }
+.menu-enter ul > li:nth-child(4) { animation-delay: 230ms; }
+.menu-enter ul > li:nth-child(5) { animation-delay: 290ms; }
+.menu-enter ul > li:nth-child(6) { animation-delay: 350ms; }
+.menu-enter > a { animation-delay: 430ms; }
+.menu-enter > div { animation-delay: 510ms; }
 
 /* --------------------------------------------------- assembly diagram */
 

@@ -65,7 +65,7 @@ export function Hero() {
             </p>
 
             <div
-              className="mt-10 flex flex-wrap items-center gap-4 hero-rise"
+              className="mt-10 grid grid-cols-1 gap-4 hero-rise sm:flex sm:flex-wrap sm:items-center"
               style={{ ["--hero-delay" as string]: 660 }}
             >
               <Link href="/capabilities" className="btn btn-primary">

@@ -37,7 +37,7 @@ export function CTASection() {
         </Inview>
 
         <Inview delay={160}>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
+          <div className="mx-auto mt-12 grid max-w-sm grid-cols-1 gap-4 sm:max-w-none sm:grid-flow-col sm:justify-center">
             <Link href="/contact#quote-form" className="btn btn-primary">
               Request a Quote
             </Link>

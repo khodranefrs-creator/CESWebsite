@@ -27,32 +27,27 @@ export function SiteFooter() {
           </p>
         </div>
 
-        <nav aria-label="Footer — site">
+        <nav aria-label="Footer — site" className="max-lg:order-3">
           <h2 className="label-mono text-fg-faint">Navigate</h2>
-          <ul className="mt-5 space-y-3 text-sm">
+          <ul className="mt-4 space-y-1 text-sm">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-fg-muted transition-colors hover:text-accent">
+                <Link href={item.href} className="block py-2 text-fg-muted transition-colors hover:text-accent">
                   {item.label}
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href="/contact" className="text-fg-muted transition-colors hover:text-accent">
-                Request a Quote
-              </Link>
-            </li>
           </ul>
         </nav>
 
-        <nav aria-label="Footer — capabilities">
+        <nav aria-label="Footer — capabilities" className="max-lg:order-4">
           <h2 className="label-mono text-fg-faint">Capabilities</h2>
-          <ul className="mt-5 space-y-3 text-sm">
+          <ul className="mt-4 space-y-1 text-sm">
             {capabilities.map((cap) => (
               <li key={cap.id}>
                 <Link
                   href={`/capabilities#${cap.id}`}
-                  className="text-fg-muted transition-colors hover:text-accent"
+                  className="block py-2 text-fg-muted transition-colors hover:text-accent"
                 >
                   {cap.name}
                 </Link>
@@ -61,7 +56,7 @@ export function SiteFooter() {
           </ul>
         </nav>
 
-        <div>
+        <div className="max-lg:order-2">
           <h2 className="label-mono text-fg-faint">Contact</h2>
           <address className="mt-5 space-y-3 text-sm not-italic text-fg-muted">
             <p>
