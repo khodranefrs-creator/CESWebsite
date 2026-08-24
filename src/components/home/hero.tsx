@@ -107,9 +107,30 @@ export function Hero() {
         >
           <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-3 py-5">
             <ul className="label-mono flex flex-wrap gap-x-8 gap-y-2 !text-[0.66rem] text-fg-muted">
-              <li className="text-fg">Fiber Optic</li>
-              <li>Copper</li>
-              <li>Electro-Mechanical</li>
+              <li>
+                <Link
+                  href="/products#fiber-optic"
+                  className="text-fg transition-colors hover:text-accent"
+                >
+                  Fiber Optic
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products#copper-cabling"
+                  className="text-fg transition-colors hover:text-accent"
+                >
+                  Copper
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products#electro-mechanical"
+                  className="text-fg transition-colors hover:text-accent"
+                >
+                  Electro-Mechanical
+                </Link>
+              </li>
               <li className="hidden sm:list-item sm:text-fg-faint">Engineering</li>
               <li className="hidden sm:list-item sm:text-fg-faint">Contract Manufacturing</li>
             </ul>

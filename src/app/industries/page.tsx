@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Inview } from "@/components/inview";
 import { CTASection } from "@/components/cta-section";
-import { industries } from "@/lib/site";
+import { industries, productFamilies } from "@/lib/site";
 import { industryGlyphs } from "@/components/graphics";
 
 export const metadata: Metadata = {
@@ -13,11 +13,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/industries" },
 };
 
-const capabilityLinks = [
-  { label: "Fiber Optic", href: "/capabilities#fiber-optic" },
-  { label: "Copper Cabling", href: "/capabilities#copper-cabling" },
-  { label: "Electro-Mechanical", href: "/capabilities#electro-mechanical" },
-];
+/* Derived from the applications each product family is verified to serve,
+   so every industry lists only the families that actually name it. */
+const relatedFamilies = (industryId: string) =>
+  productFamilies.filter((f) => f.applications.includes(industryId));
 
 export default function IndustriesPage() {
   return (
@@ -67,17 +66,17 @@ export default function IndustriesPage() {
                       {industry.line}
                     </p>
                   </div>
-                  <ul className="space-y-3 md:w-56">
+                  <ul className="space-y-3 md:w-64">
                     <li className="label-mono hidden !text-[0.6rem] text-fg-faint md:block">
-                      RELEVANT CAPABILITIES
+                      RELATED PRODUCTS
                     </li>
-                    {capabilityLinks.map((link) => (
-                      <li key={link.href}>
+                    {relatedFamilies(industry.id).map((family) => (
+                      <li key={family.id}>
                         <Link
-                          href={link.href}
+                          href={`/products#${family.id}`}
                           className="text-sm text-fg-muted underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent"
                         >
-                          {link.label}
+                          {family.name}
                         </Link>
                       </li>
                     ))}

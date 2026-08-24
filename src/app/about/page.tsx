@@ -76,16 +76,19 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-px border border-line bg-line md:grid-cols-3">
             {[
               {
+                familyId: "fiber-optic",
                 glyph: FiberGlyph,
                 name: "Fiber Optic",
                 body: "High performance fiber optic cabling systems for technology-driven industries.",
               },
               {
+                familyId: "copper-cabling",
                 glyph: CopperGlyph,
                 name: "Copper Cable Assembly",
                 body: "Copper cabling systems engineered for reliability across demanding applications.",
               },
               {
+                familyId: "electro-mechanical",
                 glyph: BoxBuildGlyph,
                 name: "Electro-Mechanical Box Build",
                 body: "Integrated electro-mechanical assemblies that turn connectivity into complete systems.",
@@ -94,18 +97,22 @@ export default function AboutPage() {
               const Glyph = item.glyph;
               return (
                 <Inview key={item.name} delay={i * 100}>
-                  <div className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg">
+                  <Link
+                    href={`/products#${item.familyId}`}
+                    aria-label={`${item.name} — view product family`}
+                    className="group flex h-full flex-col bg-surface p-8 transition-colors duration-300 hover:bg-bg"
+                  >
                     <div className="flex items-start justify-between">
                       <Glyph className="h-10 w-10 text-accent" />
                       <span className="label-mono !text-[0.62rem] text-fg-faint">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
-                    <h3 className="type-title mt-6">{item.name}</h3>
+                    <h3 className="type-title mt-6 transition-colors duration-200 group-hover:text-accent">{item.name}</h3>
                     <p className="type-body mt-3 text-fg-muted">
                       {item.body}
                     </p>
-                  </div>
+                  </Link>
                 </Inview>
               );
             })}

@@ -8,7 +8,7 @@ import { capabilities } from "@/lib/site";
 import {
   capabilityGlyphs,
   PathDivider,
-  FiberGlyph,
+  EngineeringGlyph,
 } from "@/components/graphics";
 
 export const metadata: Metadata = {
@@ -29,12 +29,16 @@ export default function CapabilitiesPage() {
           </>
         }
         lede="Five connected disciplines — one team, one standard of quality. Every capability exists to move your requirement from design intent to manufactured reality."
-        meta="FIG. 03 — CAPABILITY MAP"
+        meta="05 CONNECTED DISCIPLINES"
       />
 
       {/* overview diagram strip */}
       <section className="bg-bg-deep text-fg" aria-hidden="true">
-        <div className="mx-auto max-w-[84rem] px-5 pb-10 md:px-10">
+        <div className="mx-auto max-w-[84rem] px-5 pb-12 md:px-10">
+          <div className="flex items-center justify-between pb-3 text-fg-faint">
+            <span className="label-mono !text-[0.62rem]">FIG. 01</span>
+            <span className="label-mono hidden !text-[0.62rem] sm:block">SIGNAL PATH — DESIGN TO PRODUCTION</span>
+          </div>
           <Inview variant="draw">
             <PathDivider />
           </Inview>
@@ -115,7 +119,7 @@ export default function CapabilitiesPage() {
           </Inview>
           <Inview delay={150}>
             <div className="reg-corners border border-line p-8 md:p-10">
-              <FiberGlyph className="h-12 w-12 text-accent" />
+              <EngineeringGlyph className="h-12 w-12 text-accent" />
               <p className="mt-6 text-sm leading-relaxed text-fg-muted">
                 Quality standard: ISO certified manufacturing with strict
                 quality standards maintained throughout our processes.

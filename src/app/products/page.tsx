@@ -32,6 +32,13 @@ const figureCaptions: Record<string, string> = {
   "electro-mechanical": "BOX BUILD INTEGRATION",
 };
 
+/* accent annotations close every ClearEdge drafting plate */
+const plateAnnotations: Record<string, string> = {
+  "fiber-optic": "REPRESENTATIVE MULTI-FIBER ASSEMBLY",
+  "copper-cabling": "CONFIGURED TO YOUR REQUIREMENT",
+  "electro-mechanical": "CONNECTIVITY INTEGRATED INTO COMPLETE SYSTEMS",
+};
+
 export default function ProductsPage() {
   return (
     <>
@@ -45,6 +52,41 @@ export default function ProductsPage() {
         lede="Three product families spanning the entire signal path — fiber optic, copper, and electro-mechanical assemblies, each engineered around your requirements rather than a fixed catalogue."
         meta="PRODUCT FAMILIES / 03"
       />
+
+      {/* catalog index — scan all three families before the deep sections */}
+      <section className="theme-light bg-bg text-fg" aria-label="Product family index">
+        <div className="mx-auto max-w-[84rem] px-5 pt-12 md:px-10 lg:pt-16">
+          <div className="grid gap-px border border-line bg-line md:grid-cols-3">
+            {productFamilies.map((family) => (
+              <a
+                key={family.id}
+                href={`#${family.id}`}
+                className="group bg-bg p-6 transition-colors duration-200 hover:bg-surface md:p-7"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="label-mono !text-[0.62rem] text-fg-faint transition-colors group-hover:text-accent">
+                    FAMILY {family.index}
+                  </span>
+                  <svg
+                    width="18"
+                    height="14"
+                    viewBox="0 0 14 10"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    aria-hidden="true"
+                    className="text-fg-faint transition-all duration-200 group-hover:translate-x-1.5 group-hover:text-accent"
+                  >
+                    <path d="M0 5h12M8 1l4 4-4 4" />
+                  </svg>
+                </div>
+                <p className="type-title mt-4">{family.name}</p>
+                <p className="mt-2 text-sm text-fg-muted">{family.tagline}</p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {productFamilies.map((family, i) => {
         const Glyph = familyGlyphs[family.id];
@@ -129,7 +171,7 @@ export default function ProductsPage() {
                           aria-hidden="true"
                           className="label-mono mt-4 !text-[0.62rem] text-accent"
                         >
-                          ▸ REPRESENTATIVE MULTI-FIBER ASSEMBLY
+                          ▸ {plateAnnotations[family.id]}
                         </p>
                       </figure>
                     ) : (
@@ -143,8 +185,14 @@ export default function ProductsPage() {
                           </span>
                         </figcaption>
                         <div className="flex aspect-[850/390] items-center justify-center">
-                          <Glyph className="h-24 w-24 text-accent md:h-32 md:w-32" />
+                          <Glyph className="h-20 w-20 text-accent md:h-32 md:w-32" />
                         </div>
+                        <p
+                          aria-hidden="true"
+                          className="label-mono mt-4 !text-[0.62rem] text-accent"
+                        >
+                          ▸ {plateAnnotations[family.id]}
+                        </p>
                       </figure>
                     )}
                   </div>
@@ -158,7 +206,7 @@ export default function ProductsPage() {
       {/* quality standard */}
       <section className="theme-light bg-bg text-fg" aria-labelledby="quality-heading">
         <div className="mx-auto max-w-[84rem] px-5 py-20 md:px-10 lg:py-28">
-          <div className="grid items-center gap-10 border-t border-line-strong pt-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
+          <div className="grid items-center gap-10 border-t border-line pt-16 lg:grid-cols-[1fr_1fr] lg:gap-20">
             <Inview>
               <TechnicalLabel>Quality commitment</TechnicalLabel>
               <h2 id="quality-heading" className="type-display-m mt-6 max-w-xl">
@@ -171,7 +219,7 @@ export default function ProductsPage() {
               </p>
             </Inview>
             <Inview delay={150}>
-              <div className="reg-corners border border-line p-8 md:p-10">
+              <div className="reg-corners border border-line-strong p-8 md:p-10">
                 <p className="label-mono !text-[0.62rem] text-fg-faint">
                   QUALITY STANDARD
                 </p>

@@ -4,7 +4,7 @@ import { differentiators } from "@/lib/site";
 
 export function WhyClearEdge() {
   return (
-    <section className="theme-light border-t border-line bg-bg text-fg" aria-labelledby="why-heading">
+    <section className="bg-bg-deep text-fg" aria-labelledby="why-heading">
       <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-36">
         <div className="grid gap-14 lg:grid-cols-[1fr_1.35fr] lg:gap-20">
           <div>

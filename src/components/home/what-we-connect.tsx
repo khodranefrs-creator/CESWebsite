@@ -49,11 +49,6 @@ export function WhatWeConnect() {
               and manufactures advanced connectivity and assembly solutions that
               keep technology moving.
             </p>
-            <p className="type-body measure mt-5 text-fg-muted">
-              Driven by engineering excellence and a customer first mindset, we
-              deliver products that meet the most demanding performance and
-              quality standards — from concept to production.
-            </p>
           </Inview>
         </div>
 
