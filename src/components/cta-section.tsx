@@ -9,6 +9,8 @@ export function CTASection() {
       aria-labelledby="cta-heading"
     >
       <div className="relative mx-auto max-w-[84rem] px-5 py-28 md:px-10 lg:py-40">
+        {/* THE TRACE terminates at the closing statement */}
+        <span aria-hidden="true" className="trace-line mb-10 hidden w-40 md:mb-12 md:block" />
         <Inview>
           <p className="label-mono text-accent">Ready to connect?</p>
           <h2 id="cta-heading" className="type-giant mt-8">

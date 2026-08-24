@@ -93,13 +93,13 @@ export default function AboutPage() {
                   <Link
                     href={`/products#${item.familyId}`}
                     aria-label={`${item.name} — view product family`}
-                    className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-7 transition-colors duration-200 hover:bg-surface sm:gap-x-10 md:py-8"
+                    className="group grid grid-cols-[auto_1fr_auto] items-center gap-x-6 border-b border-line py-7 sm:gap-x-10 md:py-8"
                   >
                     <span className="label-mono !text-[0.72rem] text-fg-faint transition-colors group-hover:text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span>
-                      <span className="type-title block transition-colors duration-200 group-hover:text-accent">
+                      <span className="type-title block transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-accent">
                         {item.name}
                       </span>
                       <span className="mt-1.5 block max-w-xl text-sm leading-relaxed text-fg-muted">
@@ -201,28 +201,32 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* partnership quote */}
-      <section className="bg-bg text-fg" aria-label="Partnership philosophy">
-        <div className="mx-auto max-w-4xl px-5 py-24 text-center md:px-10 lg:py-36">
-          <Inview>
-            <svg width="34" height="24" viewBox="0 0 34 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="mx-auto text-accent" aria-hidden="true">
+      {/* partnership quote — editorial, left-set like the rest of the document */}
+      <section className="theme-light bg-bg text-fg" aria-label="Partnership philosophy">
+        <div className="mx-auto max-w-[84rem] px-5 py-24 md:px-10 lg:py-32">
+          <div className="grid gap-10 border-t-2 border-line-strong pt-14 lg:grid-cols-[auto_1fr] lg:gap-16">
+            <svg width="34" height="24" viewBox="0 0 34 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent" aria-hidden="true">
               <path d="M0 12h13M21 12h13M17 0v24" opacity="0.5" />
             </svg>
-            <blockquote className="mt-8">
-              <p className="type-display-m leading-snug">
-                &ldquo;We partner with our customers to transform ideas into
-                reality.&rdquo;
-              </p>
-            </blockquote>
-            <p className="label-mono mt-8 !tracking-[0.18em] text-fg-muted">
-              Trusted quality · Responsive service · Scalable solutions
-            </p>
-          </Inview>
-          <Inview delay={150}>
-            <ArrowLink href="/capabilities" className="mt-10">
-              See what we build
-            </ArrowLink>
-          </Inview>
+            <div>
+              <Inview>
+                <blockquote>
+                  <p className="type-display-m max-w-3xl leading-snug">
+                    &ldquo;We partner with our customers to transform ideas into
+                    reality.&rdquo;
+                  </p>
+                </blockquote>
+                <p className="label-mono mt-8 !tracking-[0.18em] text-fg-muted">
+                  Trusted quality · Responsive service · Scalable solutions
+                </p>
+              </Inview>
+              <Inview delay={150}>
+                <ArrowLink href="/capabilities" className="mt-10">
+                  See what we build
+                </ArrowLink>
+              </Inview>
+            </div>
+          </div>
         </div>
       </section>
 

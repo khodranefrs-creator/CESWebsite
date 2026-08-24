@@ -16,7 +16,10 @@ export function Hero() {
               className="label-mono hero-rise flex flex-wrap items-center gap-x-4 gap-y-2 text-fg-muted"
               style={{ ["--hero-delay" as string]: 120 }}
             >
-              <span aria-hidden="true" className="inline-block h-[1px] w-10 bg-accent" />
+              <span aria-hidden="true" className="relative inline-flex h-[7px] w-10">
+                <span className="trace-line absolute inset-x-0 top-1/2" />
+                <span className="trace-dot absolute right-0 top-1/2 -translate-y-1/2" />
+              </span>
               {company.name}
               <span aria-hidden="true" className="text-fg-faint">/</span>
               <span className="text-accent">San Jose, California</span>
@@ -58,15 +61,16 @@ export function Hero() {
             className="hero-fade relative mx-auto w-full max-w-md lg:max-w-none"
             style={{ ["--hero-delay" as string]: 320 }}
           >
-            {/* conductor bridging statement and artifact */}
+            {/* conductor bridging statement and artifact — THE TRACE */}
             <span
               aria-hidden="true"
-              className="absolute top-1/2 hidden h-[1px] w-16 -translate-y-[2px] lg:-left-16 lg:block"
+              className="absolute top-1/2 hidden w-16 -translate-y-[2px] lg:-left-16 lg:block"
             >
-              <span className="absolute inset-x-0 top-0 h-[1px] bg-line-strong" />
-              <span className="absolute left-1/2 top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent bg-bg-deep" />
+              <span className="trace-line absolute inset-x-0 top-0" />
+              <span className="trace-dot absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
             </span>
             <div className="plate reg-corners p-4 md:p-6">
+              <span aria-hidden="true" className="plate-ruler" />
               <figcaption className="plate-head !mb-0 !pb-4">
                 <span className="label-mono !text-[0.62rem] text-fg-faint">FIG. 01</span>
                 <span className="label-mono !text-[0.62rem] text-fg-faint">

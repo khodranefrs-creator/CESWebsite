@@ -145,17 +145,23 @@ export function SiteHeader() {
                   </svg>
                 </button>
               </li>
-              {navItems.slice(1).map((item) => {
+              {navItems.slice(1).map((item, i) => {
                 const active = pathname.startsWith(item.href);
                 return (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       aria-current={active ? "page" : undefined}
-                      className={`nav-link label-mono py-2 transition-colors duration-150 hover:text-accent ${
+                      className={`nav-link label-mono flex items-baseline gap-1.5 py-2 transition-colors duration-150 hover:text-accent ${
                         active ? "text-accent" : "text-fg-muted"
                       }`}
                     >
+                      <span
+                        aria-hidden="true"
+                        className="!text-[0.58rem] !tracking-normal text-fg-faint"
+                      >
+                        {String(i + 2).padStart(2, "0")}
+                      </span>
                       {item.label}
                     </Link>
                   </li>
@@ -298,7 +304,7 @@ export function SiteHeader() {
                 className="group flex items-center justify-between py-5"
               >
                 <span
-                  className={`relative font-display text-[1.7rem] font-semibold leading-none tracking-tight transition-colors ${
+                  className={`relative font-display text-[1.8rem] font-semibold leading-none tracking-tight transition-colors ${
                     pathname === "/"
                       ? "text-accent after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:content-['']"
                       : "group-hover:text-accent"
@@ -322,7 +328,7 @@ export function SiteHeader() {
                     className="group flex items-center justify-between py-5"
                   >
                     <span
-                      className={`relative font-display text-[1.7rem] font-semibold leading-none tracking-tight transition-colors ${
+                      className={`relative font-display text-[1.8rem] font-semibold leading-none tracking-tight transition-colors ${
                         active
                           ? "text-accent after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-6 after:bg-accent after:content-['']"
                           : "group-hover:text-accent"

@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------
-   CLEAREDGE SOLUTIONS — DESIGN SYSTEM v2 · "THE CONNECTIVITY SYSTEM"
-   Display: Sora (architectural grotesk) · Body: Manrope
-   Metadata: IBM Plex Mono · Signal: ClearEdge blue #0092FC
-   Language: engineering documentation — hairlines, registration
-   marks, figure plates, numbered systems, generous negative space.
+   CLEAREDGE SOLUTIONS — DESIGN SYSTEM v3 · "SIGNAL ARCHITECTURE"
+   Display: Archivo variable, wdth axis at 118% — industrial-expanded
+   Body: Manrope · Metadata: IBM Plex Mono · Signal: #0092FC
+   Signature device: THE TRACE — one line grammar (1.5px stroke, square
+   junctions, single accent node) carried by every connector on the site.
 ------------------------------------------------------------------ */
 
 :root {
@@ -68,7 +68,7 @@
 
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
-  --font-display: var(--font-sora), var(--font-manrope), ui-sans-serif,
+  --font-display: var(--font-archivo), var(--font-manrope), ui-sans-serif,
     system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, "SFMono-Regular", Menlo,
     Consolas, monospace;
@@ -120,45 +120,58 @@ body {
 }
 
 /* ------------------------------------------------------- typography */
+/* Display settings run on the expanded width axis — the proprietary
+   ClearEdge voice. Sizes are deliberately non-uniform so page
+   hierarchy breathes: giant > statement > section > chapter. */
 
 .type-giant {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 1.6rem + 8vw, 8.25rem);
-  line-height: 0.94;
-  letter-spacing: -0.04em;
-  font-weight: 600;
+  font-stretch: 118%;
+  font-size: clamp(2.75rem, 1.4rem + 8.4vw, 9.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-weight: 620;
 }
 
 .type-display-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.85rem, 1.2rem + 7vw, 6.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-  font-weight: 600;
+  font-stretch: 116%;
+  font-size: clamp(2.6rem, 1.1rem + 7.2vw, 7rem);
+  line-height: 0.97;
+  letter-spacing: -0.028em;
+  font-weight: 620;
 }
 
 .type-display-l {
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 1.4rem + 4.2vw, 4.75rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  font-weight: 600;
+  font-stretch: 115%;
+  font-size: clamp(2.15rem, 1.3rem + 4.4vw, 4.5rem);
+  line-height: 1.01;
+  letter-spacing: -0.024em;
+  font-weight: 620;
 }
 
 .type-display-m {
   font-family: var(--font-display);
-  font-size: clamp(1.9rem, 1.3rem + 2.6vw, 3.25rem);
-  line-height: 1.06;
-  letter-spacing: -0.028em;
+  font-stretch: 112%;
+  font-size: clamp(1.75rem, 1.25rem + 2.7vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
   font-weight: 600;
 }
 
 .type-title {
   font-family: var(--font-display);
-  font-size: clamp(1.25rem, 1.12rem + 0.65vw, 1.6rem);
+  font-stretch: 110%;
+  font-size: clamp(1.2rem, 1.08rem + 0.65vw, 1.55rem);
   line-height: 1.18;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.016em;
   font-weight: 600;
+}
+
+/* ad-hoc display usages inherit the stretch too */
+.font-display {
+  font-stretch: 114%;
 }
 
 .type-lede {
@@ -199,13 +212,43 @@ body {
 /* oversized section indices — quiet, architectural */
 .type-index {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-stretch: 120%;
+  font-weight: 550;
   font-size: clamp(3.5rem, 2rem + 7vw, 7.5rem);
   line-height: 0.85;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   color: var(--line-strong);
   font-variant-numeric: tabular-nums;
   user-select: none;
+}
+
+/* --------------------------------------------------------- THE TRACE */
+/* One connector grammar for the whole site:
+   — trace-line: 1.5px conductor (fg-faint)
+   — trace-junction: square terminal node
+   — trace-dot: the single accent node where a signal is live      */
+
+.trace-line {
+  position: relative;
+  height: 1.5px;
+  background: var(--line-strong);
+}
+.trace-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%);
+  border: 1.5px solid var(--fg-faint);
+  background: var(--bg);
+}
+.trace-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--accent);
 }
 
 /* ----------------------------------------------------- graphic language */
@@ -298,6 +341,37 @@ body {
   padding-top: 1rem;
   border-top: 1px solid var(--line);
   margin-top: 1rem;
+}
+
+/* measurement edge for artifact plates — surveyor ticks along the top */
+.plate-ruler {
+  position: absolute;
+  top: -9px;
+  left: 24px;
+  right: 24px;
+  height: 8px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--fg-faint) 0 1px,
+    transparent 1px 12px
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+.plate-ruler::before,
+.plate-ruler::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 1px;
+  height: 8px;
+  background: var(--fg-faint);
+}
+.plate-ruler::before {
+  left: 0;
+}
+.plate-ruler::after {
+  right: 0;
 }
 
 /* ------------------------------------------------------------- buttons */

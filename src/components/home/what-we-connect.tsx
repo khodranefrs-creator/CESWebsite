@@ -36,7 +36,7 @@ const pathways = [
 
 export function WhatWeConnect() {
   return (
-    <section id="what-we-connect" className="theme-light bg-bg text-fg" aria-labelledby="wwc-heading">
+    <section id="what-we-connect" className="relative bg-bg-deep text-fg" aria-labelledby="wwc-heading">
       <div className="mx-auto grid max-w-[84rem] gap-16 px-5 py-24 md:px-10 lg:grid-cols-[1fr_1.25fr] lg:gap-20 lg:py-36">
         {/* statement */}
         <div className="lg:sticky lg:top-32 lg:self-start">
@@ -99,7 +99,7 @@ export function WhatWeConnect() {
                     {/* station node sits on the line */}
                     <span
                       aria-hidden="true"
-                      className="absolute left-0 top-8 flex h-20 w-20 items-center justify-center border border-line-strong bg-bg lg:relative lg:top-0 lg:left-0"
+                      className="absolute left-0 top-8 flex h-20 w-20 items-center justify-center border border-line-strong bg-bg-deep lg:relative lg:top-0 lg:left-0"
                     >
                       <Glyph className="h-9 w-9 text-fg" />
                       <span className="absolute -right-[3px] top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-accent" />

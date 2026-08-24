@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 /* Technical metadata label — the site's annotation voice.
+   Anatomy is THE TRACE: conductor stub → live node → text.
    Used sparingly: one per section, never as decoration. */
 export function TechnicalLabel({
   children,
@@ -11,8 +12,11 @@ export function TechnicalLabel({
   className?: string;
 }) {
   return (
-    <p className={`label-mono flex items-center gap-3 text-accent ${className}`}>
-      <span aria-hidden="true" className="inline-block h-[1px] w-8 bg-current" />
+    <p className={`label-mono flex items-center gap-3.5 text-accent ${className}`}>
+      <span aria-hidden="true" className="relative inline-flex h-[7px] w-9 shrink-0">
+        <span className="trace-line absolute inset-x-0 top-1/2 !h-[1.5px]" />
+        <span className="trace-dot absolute right-0 top-1/2 -translate-y-1/2" />
+      </span>
       {children}
     </p>
   );

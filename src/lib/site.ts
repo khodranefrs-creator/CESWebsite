@@ -20,7 +20,7 @@ export const navItems = [
   { href: "/products", label: "Products" },
   { href: "/capabilities", label: "Capabilities" },
   { href: "/industries", label: "Industries" },
-  { href: "/about", label: "About" },
+  { href: "/about", label: "Company" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -34,9 +34,11 @@ export type ProductFamily = {
   id: string;
   index: string;
   name: string;
+  shortName: string;
   tagline: string;
   description: string;
   applications: string[];
+  href: string;
 };
 
 export const productFamilies: ProductFamily[] = [
@@ -44,28 +46,34 @@ export const productFamilies: ProductFamily[] = [
     id: "fiber-optic",
     index: "01",
     name: "Fiber Optic Cable Assemblies",
+    shortName: "Fiber Optic",
     tagline: "High-performance optical pathways",
     description:
       "High performance fiber optic cabling systems, engineered to meet exact performance requirements for technology-driven applications — from single assemblies to complete engineered runs.",
     applications: ["data-centers", "semiconductor-equipment"],
+    href: "/products#fiber-optic",
   },
   {
     id: "copper-cabling",
     index: "02",
     name: "Copper Cable Assemblies",
+    shortName: "Copper",
     tagline: "Reliable copper infrastructure",
     description:
-      "Copper cabling systems designed and manufactured for reliability — built around each customer’s configuration and design requirements rather than a fixed catalogue.",
+      "Copper cabling systems designed and manufactured for reliability — built around each customer's configuration and design requirements rather than a fixed catalogue.",
     applications: ["data-centers", "automotive"],
+    href: "/products#copper-cabling",
   },
   {
     id: "electro-mechanical",
     index: "03",
     name: "Electro-Mechanical Box Builds",
+    shortName: "Electro-Mechanical",
     tagline: "Integrated box-build capability",
     description:
       "Electro-mechanical box build assemblies that integrate connectivity into complete systems — integrated, assembled, and finished to the standards critical applications demand.",
     applications: ["semiconductor-equipment", "clean-energy"],
+    href: "/products#electro-mechanical",
   },
 ];
 

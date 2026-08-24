@@ -1,14 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Manrope, IBM_Plex_Mono } from "next/font/google";
+import { Archivo, Manrope, IBM_Plex_Mono } from "next/font/google";
 import { company } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
-const sora = Sora({
+/* Archivo variable — the wdth axis is the identity: display settings run
+   expanded (font-stretch 118%), giving headlines an industrial, drafted
+   voice no default template ships with. */
+const archivo = Archivo({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-sora",
+  axes: ["wdth"],
+  variable: "--font-archivo",
   display: "swap",
 });
 
@@ -76,7 +79,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${manrope.variable} ${plexMono.variable}`}
+      className={`${archivo.variable} ${manrope.variable} ${plexMono.variable}`}
       suppressHydrationWarning
     >
       <head>

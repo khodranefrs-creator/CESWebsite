@@ -12,10 +12,10 @@ export function WhyClearEdge() {
             <span className="block">Precision isn&rsquo;t a feature.</span>
             <span className="mt-2 block">
               It&rsquo;s the standard.
-              <span
-                aria-hidden="true"
-                className="mt-7 block h-[3px] w-28 bg-accent lg:w-40"
-              />
+              <span aria-hidden="true" className="relative mt-7 block h-[7px] w-40 lg:w-56">
+                <span className="trace-line absolute inset-x-0 top-1/2" />
+                <span className="trace-dot absolute right-0 top-1/2 -translate-y-1/2" />
+              </span>
             </span>
           </h2>
           <p className="type-lede measure-tight mt-12 text-fg-muted">
